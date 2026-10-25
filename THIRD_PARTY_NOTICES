@@ -50,3 +50,27 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+
+Cursor official public model pricing
+Source: https://cursor.com/docs/models-and-pricing
+
+The feed extracts factual numeric token rates and model identifiers, retaining
+official display names and source attribution. Cursor documentation prose is not
+redistributed. The LiteLLM and models.dev MIT licenses above do not apply to
+Cursor documentation. This repository does not claim a license to that
+documentation or grant rights to Cursor names, trademarks, or other materials.
+Rates describe base list/additional usage estimates, not subscription fees or
+a guarantee of account-specific billing.
+
+
+Devin official public SWE-2 list pricing
+Pricing source: https://docs.devin.ai/desktop/models.md
+Public model ID source: https://docs.devin.ai/desktop/models
+
+The feed extracts factual numeric SWE-2 list rates and public model identifiers.
+No account-specific tables, authenticated API responses, or documentation prose
+are redistributed. The MIT licenses above and this repository's code license
+do not license Devin documentation; no rights to that documentation or to
+Devin/Cognition names and trademarks are claimed. Public list rates exclude
+subscription allowances, promotions, and enterprise discounts.

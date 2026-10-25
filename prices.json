@@ -3023,23 +3023,43 @@
   },
   "_meta": {
     "currency": "USD",
-    "generated_at": "2026-10-25T16:19:20Z",
+    "cursor_added": 21,
+    "cursor_pricing_rows": 21,
+    "cursor_replaced_aggregate_keys": 0,
+    "cursor_unmapped_names": [],
+    "devin_added": 3,
+    "devin_replaced_aggregate_keys": 0,
+    "generated_at": "2026-10-25T16:32:30Z",
     "modelsdev_added": 8564,
     "modelsdev_existing_keys_skipped": 365,
-    "record_count": 12871,
+    "record_count": 12895,
     "schema_version": 1,
     "sources": {
+      "cursor": {
+        "count": 21,
+        "fetched_at": "2026-10-25T16:30:12Z",
+        "sha256": "0ded5a9837f893c883cdf55d9b8349ce9547f88d22a47fb5d530e41937b6d151",
+        "status": "ok",
+        "url": "https://cursor.com/docs/models-and-pricing"
+      },
+      "devin": {
+        "count": 3,
+        "fetched_at": "2026-10-25T16:31:38Z",
+        "sha256": "70491626939e992a1eab9b474d5514f3575be25c72d0e938b2926c88a8c70072",
+        "status": "ok",
+        "url": "https://docs.devin.ai/desktop/models.md"
+      },
       "litellm": {
         "count": 4308,
-        "fetched_at": "2026-10-25T16:19:19Z",
+        "fetched_at": "2026-10-25T16:29:41Z",
         "sha256": "12ea25ddb6f2427bf7be2550b5a160d8659136d8747cfddf62327701591d2226",
         "status": "ok",
         "url": "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json"
       },
       "models.dev": {
         "count": 8929,
-        "fetched_at": "2026-10-25T16:19:20Z",
-        "sha256": "9ee57c10c7666927a6179a7fee9a621702d56f2e559048abb0e32c92a42ad006",
+        "fetched_at": "2026-10-25T16:30:08Z",
+        "sha256": "e1dfb03ceb19a8506adab90761d4b7fed602d1905217a41888870deeb626bdc0",
         "status": "ok",
         "url": "https://models.dev/api.json"
       }
@@ -66175,6 +66195,713 @@
     "max_tokens": 1000000,
     "output_cost_per_token": 4.4e-06
   },
+  "cursor/claude-fable-5-1": {
+    "_cursor_pricing": {
+      "basis": "base list / additional usage estimate",
+      "excludes": [
+        "monthly subscription",
+        "plan token surcharges",
+        "regional pricing",
+        "conditional Max/Auto routing"
+      ],
+      "variant": "standard"
+    },
+    "_price_provenance": {
+      "model_id_catalog_url": "https://cursor.com/docs-static/_next/static/immutable/chunks/2gzgn5h9nqkyy.js",
+      "source": "cursor",
+      "source_key": "claude-fable-5-1",
+      "source_name": "Claude Fable 5.1",
+      "source_unit": "USD per million tokens",
+      "url": "https://cursor.com/docs/models-and-pricing"
+    },
+    "_price_status": "computable",
+    "_source_cost": {
+      "cache_read": 0.25,
+      "cache_write": 12.5,
+      "input": 10.0,
+      "output": 50.0
+    },
+    "cache_creation_input_token_cost": 1.25e-05,
+    "cache_read_input_token_cost": 2.5e-07,
+    "input_cost_per_token": 1e-05,
+    "litellm_provider": "cursor",
+    "mode": "chat",
+    "name": "Claude Fable 5.1",
+    "output_cost_per_token": 5e-05
+  },
+  "cursor/claude-haiku-5-5": {
+    "_cursor_pricing": {
+      "basis": "base list / additional usage estimate",
+      "excludes": [
+        "monthly subscription",
+        "plan token surcharges",
+        "regional pricing",
+        "conditional Max/Auto routing"
+      ],
+      "variant": "standard"
+    },
+    "_price_provenance": {
+      "model_id_catalog_url": "https://cursor.com/docs-static/_next/static/immutable/chunks/2gzgn5h9nqkyy.js",
+      "source": "cursor",
+      "source_key": "claude-haiku-5-5",
+      "source_name": "Claude Haiku 5.5",
+      "source_unit": "USD per million tokens",
+      "url": "https://cursor.com/docs/models-and-pricing"
+    },
+    "_price_status": "computable",
+    "_source_cost": {
+      "cache_read": 0.01,
+      "cache_write": 0.125,
+      "input": 0.1,
+      "output": 0.5
+    },
+    "cache_creation_input_token_cost": 1.25e-07,
+    "cache_read_input_token_cost": 1e-08,
+    "input_cost_per_token": 1.0000000000000001e-07,
+    "litellm_provider": "cursor",
+    "mode": "chat",
+    "name": "Claude Haiku 5.5",
+    "output_cost_per_token": 5e-07
+  },
+  "cursor/claude-opus-5-5": {
+    "_cursor_pricing": {
+      "basis": "base list / additional usage estimate",
+      "excludes": [
+        "monthly subscription",
+        "plan token surcharges",
+        "regional pricing",
+        "conditional Max/Auto routing"
+      ],
+      "variant": "standard"
+    },
+    "_price_provenance": {
+      "model_id_catalog_url": "https://cursor.com/docs-static/_next/static/immutable/chunks/2gzgn5h9nqkyy.js",
+      "source": "cursor",
+      "source_key": "claude-opus-5-5",
+      "source_name": "Claude Opus 5.5",
+      "source_unit": "USD per million tokens",
+      "url": "https://cursor.com/docs/models-and-pricing"
+    },
+    "_price_status": "computable",
+    "_source_cost": {
+      "cache_read": 0.2,
+      "cache_write": 5.0,
+      "input": 4.0,
+      "output": 20.0
+    },
+    "cache_creation_input_token_cost": 5e-06,
+    "cache_read_input_token_cost": 2.0000000000000002e-07,
+    "input_cost_per_token": 4e-06,
+    "litellm_provider": "cursor",
+    "mode": "chat",
+    "name": "Claude Opus 5.5",
+    "output_cost_per_token": 2e-05
+  },
+  "cursor/claude-sonnet-5-5": {
+    "_cursor_pricing": {
+      "basis": "base list / additional usage estimate",
+      "excludes": [
+        "monthly subscription",
+        "plan token surcharges",
+        "regional pricing",
+        "conditional Max/Auto routing"
+      ],
+      "variant": "standard"
+    },
+    "_price_provenance": {
+      "model_id_catalog_url": "https://cursor.com/docs-static/_next/static/immutable/chunks/2gzgn5h9nqkyy.js",
+      "source": "cursor",
+      "source_key": "claude-sonnet-5-5",
+      "source_name": "Claude Sonnet 5.5",
+      "source_unit": "USD per million tokens",
+      "url": "https://cursor.com/docs/models-and-pricing"
+    },
+    "_price_status": "computable",
+    "_source_cost": {
+      "cache_read": 0.1,
+      "cache_write": 2.5,
+      "input": 2.0,
+      "output": 10.0
+    },
+    "cache_creation_input_token_cost": 2.5e-06,
+    "cache_read_input_token_cost": 1.0000000000000001e-07,
+    "input_cost_per_token": 2e-06,
+    "litellm_provider": "cursor",
+    "mode": "chat",
+    "name": "Claude Sonnet 5.5",
+    "output_cost_per_token": 1e-05
+  },
+  "cursor/composer-2.5": {
+    "_cursor_pricing": {
+      "basis": "base list / additional usage estimate",
+      "excludes": [
+        "monthly subscription",
+        "plan token surcharges",
+        "regional pricing",
+        "conditional Max/Auto routing"
+      ],
+      "fast_model_id": "composer-2.5-fast",
+      "product_default_variant": "fast",
+      "variant": "standard"
+    },
+    "_price_provenance": {
+      "model_id_catalog_url": "https://cursor.com/docs-static/_next/static/immutable/chunks/2gzgn5h9nqkyy.js",
+      "source": "cursor",
+      "source_key": "composer-2.5",
+      "source_name": "Composer 2.5",
+      "source_unit": "USD per million tokens",
+      "url": "https://cursor.com/docs/models-and-pricing"
+    },
+    "_price_status": "computable",
+    "_source_cost": {
+      "cache_read": 0.2,
+      "input": 0.5,
+      "output": 2.5
+    },
+    "cache_read_input_token_cost": 2.0000000000000002e-07,
+    "input_cost_per_token": 5e-07,
+    "litellm_provider": "cursor",
+    "mode": "chat",
+    "name": "Composer 2.5",
+    "output_cost_per_token": 2.5e-06
+  },
+  "cursor/composer-2.5-fast": {
+    "_cursor_pricing": {
+      "basis": "base list / additional usage estimate",
+      "excludes": [
+        "monthly subscription",
+        "plan token surcharges",
+        "regional pricing",
+        "conditional Max/Auto routing"
+      ],
+      "product_default_variant": "fast",
+      "variant": "fast"
+    },
+    "_price_provenance": {
+      "model_id_catalog_url": "https://cursor.com/docs-static/_next/static/immutable/chunks/2gzgn5h9nqkyy.js",
+      "source": "cursor",
+      "source_key": "composer-2.5-fast",
+      "source_name": "Composer 2.5 (Fast)",
+      "source_unit": "USD per million tokens",
+      "url": "https://cursor.com/docs/models-and-pricing"
+    },
+    "_price_status": "computable",
+    "_source_cost": {
+      "cache_read": 0.5,
+      "input": 3.0,
+      "output": 15.0
+    },
+    "cache_read_input_token_cost": 5e-07,
+    "input_cost_per_token": 3e-06,
+    "litellm_provider": "cursor",
+    "mode": "chat",
+    "name": "Composer 2.5 (Fast)",
+    "output_cost_per_token": 1.5e-05
+  },
+  "cursor/gemini-3.1-pro": {
+    "_cursor_pricing": {
+      "basis": "base list / additional usage estimate",
+      "excludes": [
+        "monthly subscription",
+        "plan token surcharges",
+        "regional pricing",
+        "conditional Max/Auto routing"
+      ],
+      "variant": "standard"
+    },
+    "_price_provenance": {
+      "model_id_catalog_url": "https://cursor.com/docs-static/_next/static/immutable/chunks/2gzgn5h9nqkyy.js",
+      "source": "cursor",
+      "source_key": "gemini-3.1-pro",
+      "source_name": "Gemini 3.1 Pro",
+      "source_unit": "USD per million tokens",
+      "url": "https://cursor.com/docs/models-and-pricing"
+    },
+    "_price_status": "computable",
+    "_source_cost": {
+      "cache_read": 0.2,
+      "input": 2.0,
+      "output": 12.0
+    },
+    "cache_read_input_token_cost": 2.0000000000000002e-07,
+    "input_cost_per_token": 2e-06,
+    "litellm_provider": "cursor",
+    "mode": "chat",
+    "name": "Gemini 3.1 Pro",
+    "output_cost_per_token": 1.2e-05
+  },
+  "cursor/gemini-3.8-flash": {
+    "_cursor_pricing": {
+      "basis": "base list / additional usage estimate",
+      "excludes": [
+        "monthly subscription",
+        "plan token surcharges",
+        "regional pricing",
+        "conditional Max/Auto routing"
+      ],
+      "variant": "standard"
+    },
+    "_price_provenance": {
+      "model_id_catalog_url": "https://cursor.com/docs-static/_next/static/immutable/chunks/2gzgn5h9nqkyy.js",
+      "source": "cursor",
+      "source_key": "gemini-3.8-flash",
+      "source_name": "Gemini 3.8 Flash",
+      "source_unit": "USD per million tokens",
+      "url": "https://cursor.com/docs/models-and-pricing"
+    },
+    "_price_status": "computable",
+    "_source_cost": {
+      "cache_read": 0.075,
+      "input": 0.75,
+      "output": 3.75
+    },
+    "cache_read_input_token_cost": 7.5e-08,
+    "input_cost_per_token": 7.5e-07,
+    "litellm_provider": "cursor",
+    "mode": "chat",
+    "name": "Gemini 3.8 Flash",
+    "output_cost_per_token": 3.75e-06
+  },
+  "cursor/gemini-4-argon": {
+    "_cursor_pricing": {
+      "basis": "base list / additional usage estimate",
+      "excludes": [
+        "monthly subscription",
+        "plan token surcharges",
+        "regional pricing",
+        "conditional Max/Auto routing"
+      ],
+      "variant": "standard"
+    },
+    "_price_provenance": {
+      "model_id_catalog_url": "https://cursor.com/docs-static/_next/static/immutable/chunks/2gzgn5h9nqkyy.js",
+      "source": "cursor",
+      "source_key": "gemini-4-argon",
+      "source_name": "Gemini 4 Argon",
+      "source_unit": "USD per million tokens",
+      "url": "https://cursor.com/docs/models-and-pricing"
+    },
+    "_price_status": "computable",
+    "_source_cost": {
+      "cache_read": 0.1,
+      "input": 2.0,
+      "output": 10.0
+    },
+    "cache_read_input_token_cost": 1.0000000000000001e-07,
+    "input_cost_per_token": 2e-06,
+    "litellm_provider": "cursor",
+    "mode": "chat",
+    "name": "Gemini 4 Argon",
+    "output_cost_per_token": 1e-05
+  },
+  "cursor/gpt-5.6-luna": {
+    "_cursor_pricing": {
+      "basis": "base list / additional usage estimate",
+      "excludes": [
+        "monthly subscription",
+        "plan token surcharges",
+        "regional pricing",
+        "conditional Max/Auto routing"
+      ],
+      "variant": "standard"
+    },
+    "_price_provenance": {
+      "model_id_catalog_url": "https://cursor.com/docs-static/_next/static/immutable/chunks/2gzgn5h9nqkyy.js",
+      "source": "cursor",
+      "source_key": "gpt-5.6-luna",
+      "source_name": "GPT-5.6 Luna",
+      "source_unit": "USD per million tokens",
+      "url": "https://cursor.com/docs/models-and-pricing"
+    },
+    "_price_status": "computable",
+    "_source_cost": {
+      "cache_read": 0.02,
+      "cache_write": 0.25,
+      "input": 0.2,
+      "output": 1.2
+    },
+    "cache_creation_input_token_cost": 2.5e-07,
+    "cache_read_input_token_cost": 2e-08,
+    "input_cost_per_token": 2.0000000000000002e-07,
+    "litellm_provider": "cursor",
+    "mode": "chat",
+    "name": "GPT-5.6 Luna",
+    "output_cost_per_token": 1.2e-06
+  },
+  "cursor/gpt-5.6-sol": {
+    "_cursor_pricing": {
+      "basis": "base list / additional usage estimate",
+      "excludes": [
+        "monthly subscription",
+        "plan token surcharges",
+        "regional pricing",
+        "conditional Max/Auto routing"
+      ],
+      "variant": "standard"
+    },
+    "_price_provenance": {
+      "model_id_catalog_url": "https://cursor.com/docs-static/_next/static/immutable/chunks/2gzgn5h9nqkyy.js",
+      "source": "cursor",
+      "source_key": "gpt-5.6-sol",
+      "source_name": "GPT-5.6 Sol",
+      "source_unit": "USD per million tokens",
+      "url": "https://cursor.com/docs/models-and-pricing"
+    },
+    "_price_status": "computable",
+    "_source_cost": {
+      "cache_read": 0.4,
+      "cache_write": 5.0,
+      "input": 4.0,
+      "output": 20.0
+    },
+    "cache_creation_input_token_cost": 5e-06,
+    "cache_read_input_token_cost": 4.0000000000000003e-07,
+    "input_cost_per_token": 4e-06,
+    "litellm_provider": "cursor",
+    "mode": "chat",
+    "name": "GPT-5.6 Sol",
+    "output_cost_per_token": 2e-05
+  },
+  "cursor/gpt-5.6-terra": {
+    "_cursor_pricing": {
+      "basis": "base list / additional usage estimate",
+      "excludes": [
+        "monthly subscription",
+        "plan token surcharges",
+        "regional pricing",
+        "conditional Max/Auto routing"
+      ],
+      "variant": "standard"
+    },
+    "_price_provenance": {
+      "model_id_catalog_url": "https://cursor.com/docs-static/_next/static/immutable/chunks/2gzgn5h9nqkyy.js",
+      "source": "cursor",
+      "source_key": "gpt-5.6-terra",
+      "source_name": "GPT-5.6 Terra",
+      "source_unit": "USD per million tokens",
+      "url": "https://cursor.com/docs/models-and-pricing"
+    },
+    "_price_status": "computable",
+    "_source_cost": {
+      "cache_read": 0.2,
+      "cache_write": 2.5,
+      "input": 2.0,
+      "output": 12.0
+    },
+    "cache_creation_input_token_cost": 2.5e-06,
+    "cache_read_input_token_cost": 2.0000000000000002e-07,
+    "input_cost_per_token": 2e-06,
+    "litellm_provider": "cursor",
+    "mode": "chat",
+    "name": "GPT-5.6 Terra",
+    "output_cost_per_token": 1.2e-05
+  },
+  "cursor/grok-4.5": {
+    "_cursor_pricing": {
+      "basis": "base list / additional usage estimate",
+      "excludes": [
+        "monthly subscription",
+        "plan token surcharges",
+        "regional pricing",
+        "conditional Max/Auto routing"
+      ],
+      "fast_model_id": "grok-4.5-fast",
+      "variant": "standard"
+    },
+    "_price_provenance": {
+      "model_id_catalog_url": "https://cursor.com/docs-static/_next/static/immutable/chunks/2gzgn5h9nqkyy.js",
+      "source": "cursor",
+      "source_key": "grok-4.5",
+      "source_name": "Grok 4.5",
+      "source_unit": "USD per million tokens",
+      "url": "https://cursor.com/docs/models-and-pricing"
+    },
+    "_price_status": "computable",
+    "_source_cost": {
+      "cache_read": 0.5,
+      "input": 2.0,
+      "output": 6.0
+    },
+    "cache_read_input_token_cost": 5e-07,
+    "input_cost_per_token": 2e-06,
+    "litellm_provider": "cursor",
+    "mode": "chat",
+    "name": "Grok 4.5",
+    "output_cost_per_token": 6e-06
+  },
+  "cursor/grok-4.5-fast": {
+    "_cursor_pricing": {
+      "basis": "base list / additional usage estimate",
+      "excludes": [
+        "monthly subscription",
+        "plan token surcharges",
+        "regional pricing",
+        "conditional Max/Auto routing"
+      ],
+      "variant": "fast"
+    },
+    "_price_provenance": {
+      "model_id_catalog_url": "https://cursor.com/docs-static/_next/static/immutable/chunks/2gzgn5h9nqkyy.js",
+      "source": "cursor",
+      "source_key": "grok-4.5-fast",
+      "source_name": "Grok 4.5 (Fast)",
+      "source_unit": "USD per million tokens",
+      "url": "https://cursor.com/docs/models-and-pricing"
+    },
+    "_price_status": "computable",
+    "_source_cost": {
+      "cache_read": 1.0,
+      "input": 4.0,
+      "output": 18.0
+    },
+    "cache_read_input_token_cost": 1e-06,
+    "input_cost_per_token": 4e-06,
+    "litellm_provider": "cursor",
+    "mode": "chat",
+    "name": "Grok 4.5 (Fast)",
+    "output_cost_per_token": 1.8e-05
+  },
+  "cursor/grok-4.6": {
+    "_cursor_pricing": {
+      "basis": "base list / additional usage estimate",
+      "excludes": [
+        "monthly subscription",
+        "plan token surcharges",
+        "regional pricing",
+        "conditional Max/Auto routing"
+      ],
+      "fast_model_id": "grok-4.6-fast",
+      "variant": "standard"
+    },
+    "_price_provenance": {
+      "model_id_catalog_url": "https://cursor.com/docs-static/_next/static/immutable/chunks/2gzgn5h9nqkyy.js",
+      "source": "cursor",
+      "source_key": "grok-4.6",
+      "source_name": "Grok 4.6",
+      "source_unit": "USD per million tokens",
+      "url": "https://cursor.com/docs/models-and-pricing"
+    },
+    "_price_status": "computable",
+    "_source_cost": {
+      "cache_read": 0.5,
+      "input": 2.0,
+      "output": 6.0
+    },
+    "cache_read_input_token_cost": 5e-07,
+    "input_cost_per_token": 2e-06,
+    "litellm_provider": "cursor",
+    "mode": "chat",
+    "name": "Grok 4.6",
+    "output_cost_per_token": 6e-06
+  },
+  "cursor/grok-4.6-fast": {
+    "_cursor_pricing": {
+      "basis": "base list / additional usage estimate",
+      "excludes": [
+        "monthly subscription",
+        "plan token surcharges",
+        "regional pricing",
+        "conditional Max/Auto routing"
+      ],
+      "variant": "fast"
+    },
+    "_price_provenance": {
+      "model_id_catalog_url": "https://cursor.com/docs-static/_next/static/immutable/chunks/2gzgn5h9nqkyy.js",
+      "source": "cursor",
+      "source_key": "grok-4.6-fast",
+      "source_name": "Grok 4.6 (Fast)",
+      "source_unit": "USD per million tokens",
+      "url": "https://cursor.com/docs/models-and-pricing"
+    },
+    "_price_status": "computable",
+    "_source_cost": {
+      "cache_read": 1.0,
+      "input": 4.0,
+      "output": 12.0
+    },
+    "cache_read_input_token_cost": 1e-06,
+    "input_cost_per_token": 4e-06,
+    "litellm_provider": "cursor",
+    "mode": "chat",
+    "name": "Grok 4.6 (Fast)",
+    "output_cost_per_token": 1.2e-05
+  },
+  "cursor/grok-4.7": {
+    "_cursor_pricing": {
+      "applies_above_threshold": false,
+      "basis": "base list / additional usage estimate",
+      "excludes": [
+        "monthly subscription",
+        "plan token surcharges",
+        "regional pricing",
+        "conditional Max/Auto routing"
+      ],
+      "fast_model_id": "grok-4.7-fast",
+      "long_context_model_id": "grok-4.7-long",
+      "long_context_threshold_input_tokens": 256000,
+      "variant": "standard"
+    },
+    "_price_provenance": {
+      "model_id_catalog_url": "https://cursor.com/docs-static/_next/static/immutable/chunks/2gzgn5h9nqkyy.js",
+      "source": "cursor",
+      "source_key": "grok-4.7",
+      "source_name": "Grok 4.7",
+      "source_unit": "USD per million tokens",
+      "url": "https://cursor.com/docs/models-and-pricing"
+    },
+    "_price_status": "computable",
+    "_source_cost": {
+      "cache_read": 0.5,
+      "input": 2.0,
+      "output": 6.0
+    },
+    "cache_read_input_token_cost": 5e-07,
+    "input_cost_per_token": 2e-06,
+    "litellm_provider": "cursor",
+    "mode": "chat",
+    "name": "Grok 4.7",
+    "output_cost_per_token": 6e-06
+  },
+  "cursor/grok-4.7-fast": {
+    "_cursor_pricing": {
+      "applies_above_threshold": false,
+      "basis": "base list / additional usage estimate",
+      "excludes": [
+        "monthly subscription",
+        "plan token surcharges",
+        "regional pricing",
+        "conditional Max/Auto routing"
+      ],
+      "long_context_model_id": "grok-4.7-fast-long",
+      "long_context_threshold_input_tokens": 256000,
+      "variant": "fast"
+    },
+    "_price_provenance": {
+      "model_id_catalog_url": "https://cursor.com/docs-static/_next/static/immutable/chunks/2gzgn5h9nqkyy.js",
+      "source": "cursor",
+      "source_key": "grok-4.7-fast",
+      "source_name": "Grok 4.7 (Fast)",
+      "source_unit": "USD per million tokens",
+      "url": "https://cursor.com/docs/models-and-pricing"
+    },
+    "_price_status": "computable",
+    "_source_cost": {
+      "cache_read": 1.0,
+      "input": 4.0,
+      "output": 12.0
+    },
+    "cache_read_input_token_cost": 1e-06,
+    "input_cost_per_token": 4e-06,
+    "litellm_provider": "cursor",
+    "mode": "chat",
+    "name": "Grok 4.7 (Fast)",
+    "output_cost_per_token": 1.2e-05
+  },
+  "cursor/grok-4.7-fast-long": {
+    "_cursor_pricing": {
+      "applies_above_threshold": true,
+      "basis": "base list / additional usage estimate",
+      "excludes": [
+        "monthly subscription",
+        "plan token surcharges",
+        "regional pricing",
+        "conditional Max/Auto routing"
+      ],
+      "long_context_model_id": "grok-4.7-fast-long",
+      "long_context_threshold_input_tokens": 256000,
+      "short_context_model_id": "grok-4.7-fast",
+      "variant": "500k fast"
+    },
+    "_price_provenance": {
+      "model_id_catalog_url": "https://cursor.com/docs-static/_next/static/immutable/chunks/2gzgn5h9nqkyy.js",
+      "source": "cursor",
+      "source_key": "grok-4.7-fast-long",
+      "source_name": "Grok 4.7 500k (Fast)",
+      "source_unit": "USD per million tokens",
+      "url": "https://cursor.com/docs/models-and-pricing"
+    },
+    "_price_status": "computable",
+    "_source_cost": {
+      "cache_read": 1.5,
+      "input": 6.0,
+      "output": 18.0
+    },
+    "cache_read_input_token_cost": 1.5e-06,
+    "input_cost_per_token": 6e-06,
+    "litellm_provider": "cursor",
+    "mode": "chat",
+    "name": "Grok 4.7 500k (Fast)",
+    "output_cost_per_token": 1.8e-05
+  },
+  "cursor/grok-4.7-long": {
+    "_cursor_pricing": {
+      "applies_above_threshold": true,
+      "basis": "base list / additional usage estimate",
+      "excludes": [
+        "monthly subscription",
+        "plan token surcharges",
+        "regional pricing",
+        "conditional Max/Auto routing"
+      ],
+      "fast_model_id": "grok-4.7-fast-long",
+      "long_context_model_id": "grok-4.7-long",
+      "long_context_threshold_input_tokens": 256000,
+      "short_context_model_id": "grok-4.7",
+      "variant": "500k"
+    },
+    "_price_provenance": {
+      "model_id_catalog_url": "https://cursor.com/docs-static/_next/static/immutable/chunks/2gzgn5h9nqkyy.js",
+      "source": "cursor",
+      "source_key": "grok-4.7-long",
+      "source_name": "Grok 4.7 500k",
+      "source_unit": "USD per million tokens",
+      "url": "https://cursor.com/docs/models-and-pricing"
+    },
+    "_price_status": "computable",
+    "_source_cost": {
+      "cache_read": 1.0,
+      "input": 4.0,
+      "output": 12.0
+    },
+    "cache_read_input_token_cost": 1e-06,
+    "input_cost_per_token": 4e-06,
+    "litellm_provider": "cursor",
+    "mode": "chat",
+    "name": "Grok 4.7 500k",
+    "output_cost_per_token": 1.2e-05
+  },
+  "cursor/muse-wonder-1.0": {
+    "_cursor_pricing": {
+      "basis": "base list / additional usage estimate",
+      "excludes": [
+        "monthly subscription",
+        "plan token surcharges",
+        "regional pricing",
+        "conditional Max/Auto routing"
+      ],
+      "variant": "standard"
+    },
+    "_price_provenance": {
+      "model_id_catalog_url": "https://cursor.com/docs-static/_next/static/immutable/chunks/2gzgn5h9nqkyy.js",
+      "source": "cursor",
+      "source_key": "muse-wonder-1.0",
+      "source_name": "Muse Wonder",
+      "source_unit": "USD per million tokens",
+      "url": "https://cursor.com/docs/models-and-pricing"
+    },
+    "_price_status": "computable",
+    "_source_cost": {
+      "cache_read": 0.2,
+      "input": 4.0,
+      "output": 20.0
+    },
+    "cache_read_input_token_cost": 2.0000000000000002e-07,
+    "input_cost_per_token": 4e-06,
+    "litellm_provider": "cursor",
+    "mode": "chat",
+    "name": "Muse Wonder",
+    "output_cost_per_token": 2e-05
+  },
   "daoxe/claude-haiku-4-5-20251001": {
     "_price_provenance": {
       "provider_id": "daoxe",
@@ -74367,6 +75094,102 @@
     "input_cost_per_query": 0.00075,
     "litellm_provider": "deepseek",
     "mode": "search"
+  },
+  "devin/swe-2-high": {
+    "_devin_pricing": {
+      "basis": "public_list_price",
+      "excludes": [
+        "subscription allowance",
+        "promotions",
+        "enterprise discounts",
+        "account-specific billing"
+      ],
+      "variant": "high"
+    },
+    "_price_provenance": {
+      "model_id_catalog_url": "https://docs.devin.ai/desktop/models",
+      "source": "devin",
+      "source_key": "swe-2-high",
+      "source_name": "SWE-2 High",
+      "source_unit": "USD per million tokens",
+      "url": "https://docs.devin.ai/desktop/models.md"
+    },
+    "_price_status": "computable",
+    "_source_cost": {
+      "cache_read": 0.3,
+      "input": 3.0,
+      "output": 15.0
+    },
+    "cache_read_input_token_cost": 3e-07,
+    "input_cost_per_token": 3e-06,
+    "litellm_provider": "devin",
+    "mode": "chat",
+    "name": "SWE-2 High",
+    "output_cost_per_token": 1.5e-05
+  },
+  "devin/swe-2-max": {
+    "_devin_pricing": {
+      "basis": "public_list_price",
+      "excludes": [
+        "subscription allowance",
+        "promotions",
+        "enterprise discounts",
+        "account-specific billing"
+      ],
+      "variant": "max"
+    },
+    "_price_provenance": {
+      "model_id_catalog_url": "https://docs.devin.ai/desktop/models",
+      "source": "devin",
+      "source_key": "swe-2-max",
+      "source_name": "SWE-2 Max",
+      "source_unit": "USD per million tokens",
+      "url": "https://docs.devin.ai/desktop/models.md"
+    },
+    "_price_status": "computable",
+    "_source_cost": {
+      "cache_read": 0.3,
+      "input": 3.0,
+      "output": 15.0
+    },
+    "cache_read_input_token_cost": 3e-07,
+    "input_cost_per_token": 3e-06,
+    "litellm_provider": "devin",
+    "mode": "chat",
+    "name": "SWE-2 Max",
+    "output_cost_per_token": 1.5e-05
+  },
+  "devin/swe-2-medium": {
+    "_devin_pricing": {
+      "basis": "public_list_price",
+      "excludes": [
+        "subscription allowance",
+        "promotions",
+        "enterprise discounts",
+        "account-specific billing"
+      ],
+      "variant": "medium"
+    },
+    "_price_provenance": {
+      "model_id_catalog_url": "https://docs.devin.ai/desktop/models",
+      "source": "devin",
+      "source_key": "swe-2-medium",
+      "source_name": "SWE-2 Medium",
+      "source_unit": "USD per million tokens",
+      "url": "https://docs.devin.ai/desktop/models.md"
+    },
+    "_price_status": "computable",
+    "_source_cost": {
+      "cache_read": 0.3,
+      "input": 3.0,
+      "output": 15.0
+    },
+    "cache_read_input_token_cost": 3e-07,
+    "input_cost_per_token": 3e-06,
+    "litellm_provider": "devin",
+    "mode": "chat",
+    "name": "SWE-2 Medium",
+    "output_cost_per_token": 1.5e-05
   },
   "digitalocean/all-mini-lm-l6-v2": {
     "_price_provenance": {
@@ -125661,7 +126484,7 @@
       "cache_read": 0.12,
       "cache_write": 0,
       "input": 0.6,
-      "output": 3.7664
+      "output": 2.8
     },
     "cache_creation_input_token_cost": 0.0,
     "cache_read_input_token_cost": 1.2e-07,
@@ -125669,7 +126492,7 @@
     "litellm_provider": "inceptron",
     "max_output_tokens": 1048576,
     "max_tokens": 1048576,
-    "output_cost_per_token": 3.7664e-06
+    "output_cost_per_token": 2.8e-06
   },
   "inceptron/zai-org/GLM-5.3-Flash": {
     "_price_provenance": {
@@ -137118,7 +137941,7 @@
     },
     "input_cost_per_token": 4.5000000000000003e-07,
     "litellm_provider": "kilo",
-    "max_output_tokens": 65536,
+    "max_output_tokens": 81920,
     "max_tokens": 262144,
     "output_cost_per_token": 2.7e-06
   },
@@ -137944,17 +138767,17 @@
     },
     "_price_status": "computable",
     "_source_cost": {
-      "cache_read": 0.033,
-      "input": 0.132,
-      "output": 0.528
+      "cache_read": 0.020625,
+      "input": 0.0825,
+      "output": 0.33
     },
-    "cache_read_input_token_cost": 3.3000000000000004e-08,
-    "input_cost_per_token": 1.3200000000000002e-07,
+    "cache_read_input_token_cost": 2.0625e-08,
+    "input_cost_per_token": 8.25e-08,
     "litellm_provider": "kilo",
     "max_input_tokens": 192000,
     "max_output_tokens": 128000,
     "max_tokens": 262144,
-    "output_cost_per_token": 5.280000000000001e-07
+    "output_cost_per_token": 3.3e-07
   },
   "kilo/tencent/hy3-preview": {
     "_price_provenance": {
@@ -137985,16 +138808,16 @@
     },
     "_price_status": "computable",
     "_source_cost": {
-      "cache_read": 0.042,
-      "input": 0.834,
-      "output": 2.501
+      "cache_read": 0.0378,
+      "input": 0.7506,
+      "output": 2.2509
     },
-    "cache_read_input_token_cost": 4.2000000000000006e-08,
-    "input_cost_per_token": 8.34e-07,
+    "cache_read_input_token_cost": 3.78e-08,
+    "input_cost_per_token": 7.506000000000001e-07,
     "litellm_provider": "kilo",
     "max_output_tokens": 64000,
     "max_tokens": 1048576,
-    "output_cost_per_token": 2.501e-06
+    "output_cost_per_token": 2.2509e-06
   },
   "kilo/thedrummer/cydonia-24b-v4.1": {
     "_price_provenance": {
@@ -139043,16 +139866,16 @@
     },
     "_price_status": "computable",
     "_source_cost": {
-      "cache_read": 0.204,
-      "input": 0.214,
-      "output": 16
+      "cache_read": 0.17,
+      "input": 0.171,
+      "output": 9.3421
     },
-    "cache_read_input_token_cost": 2.0399999999999997e-07,
-    "input_cost_per_token": 2.1399999999999998e-07,
+    "cache_read_input_token_cost": 1.7000000000000001e-07,
+    "input_cost_per_token": 1.71e-07,
     "litellm_provider": "kilo",
     "max_output_tokens": 943718,
     "max_tokens": 1048576,
-    "output_cost_per_token": 1.6e-05
+    "output_cost_per_token": 9.3421e-06
   },
   "kilo/~openai/gpt-astra-latest": {
     "_price_provenance": {
@@ -208838,16 +209661,14 @@
     },
     "_price_status": "computable",
     "_source_cost": {
-      "cache_read": 0.025,
-      "input": 0.25,
-      "output": 2
+      "input": 0.32,
+      "output": 3.2
     },
-    "cache_read_input_token_cost": 2.5000000000000002e-08,
-    "input_cost_per_token": 2.5e-07,
+    "input_cost_per_token": 3.2e-07,
     "litellm_provider": "openrouter",
-    "max_output_tokens": 65536,
+    "max_output_tokens": 81920,
     "max_tokens": 262144,
-    "output_cost_per_token": 2e-06
+    "output_cost_per_token": 3.2000000000000003e-06
   },
   "openrouter/qwen/qwen3.6-35b-a3b": {
     "_price_provenance": {
@@ -209603,17 +210424,17 @@
     },
     "_price_status": "computable",
     "_source_cost": {
-      "cache_read": 0.033,
-      "input": 0.132,
-      "output": 0.528
+      "cache_read": 0.020625,
+      "input": 0.0825,
+      "output": 0.33
     },
-    "cache_read_input_token_cost": 3.3000000000000004e-08,
-    "input_cost_per_token": 1.3200000000000002e-07,
+    "cache_read_input_token_cost": 2.0625e-08,
+    "input_cost_per_token": 8.25e-08,
     "litellm_provider": "openrouter",
     "max_input_tokens": 192000,
     "max_output_tokens": 128000,
     "max_tokens": 262144,
-    "output_cost_per_token": 5.280000000000001e-07
+    "output_cost_per_token": 3.3e-07
   },
   "openrouter/tencent/hy3-preview": {
     "_price_provenance": {
@@ -209644,16 +210465,16 @@
     },
     "_price_status": "computable",
     "_source_cost": {
-      "cache_read": 0.042,
-      "input": 0.834,
-      "output": 2.501
+      "cache_read": 0.0378,
+      "input": 0.7506,
+      "output": 2.2509
     },
-    "cache_read_input_token_cost": 4.2000000000000006e-08,
-    "input_cost_per_token": 8.34e-07,
+    "cache_read_input_token_cost": 3.78e-08,
+    "input_cost_per_token": 7.506000000000001e-07,
     "litellm_provider": "openrouter",
     "max_output_tokens": 64000,
     "max_tokens": 1048576,
-    "output_cost_per_token": 2.501e-06
+    "output_cost_per_token": 2.2509e-06
   },
   "openrouter/thedrummer/cydonia-24b-v4.1": {
     "_price_provenance": {
@@ -210850,16 +211671,16 @@
     },
     "_price_status": "computable",
     "_source_cost": {
-      "cache_read": 0.204,
-      "input": 0.214,
-      "output": 16
+      "cache_read": 0.17,
+      "input": 0.171,
+      "output": 9.3421
     },
-    "cache_read_input_token_cost": 2.0399999999999997e-07,
-    "input_cost_per_token": 2.1399999999999998e-07,
+    "cache_read_input_token_cost": 1.7000000000000001e-07,
+    "input_cost_per_token": 1.71e-07,
     "litellm_provider": "openrouter",
     "max_output_tokens": 943718,
     "max_tokens": 1048576,
-    "output_cost_per_token": 1.6e-05
+    "output_cost_per_token": 9.3421e-06
   },
   "openrouter/~openai/gpt-astra-latest": {
     "_price_provenance": {

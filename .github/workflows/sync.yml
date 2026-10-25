@@ -22,7 +22,7 @@ jobs:
       - uses: actions/setup-python@v7
         with:
           python-version: '3.13'
-      - name: Fetch and validate both required sources
+      - name: Fetch and validate all required sources
         run: python scripts/sync_prices.py
       - name: Validate the published JSON
         run: python scripts/sync_prices.py --check

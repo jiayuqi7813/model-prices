@@ -4,6 +4,8 @@ import argparse
 import copy
 from datetime import datetime, timezone
 import hashlib
+from html.parser import HTMLParser
+import re
 import json
 import math
 import os
@@ -16,6 +18,8 @@ from urllib.request import Request, urlopen
 SOURCES = {
     "litellm": "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json",
     "models.dev": "https://models.dev/api.json",
+    "cursor": "https://cursor.com/docs/models-and-pricing",
+    "devin": "https://docs.devin.ai/desktop/models.md",
 }
 RATE_FIELDS = {
     "input": "input_cost_per_token",
@@ -48,22 +52,192 @@ def decode(raw):
     return json.loads(raw, parse_constant=reject_constant)
 
 
+# These are verified official Cursor model/catalog IDs, never IDs synthesized from display labels.
+# Keep this allowlist explicit: new upstream labels require mapping review.
+CURSOR_ID_CATALOG = "https://cursor.com/docs-static/_next/static/immutable/chunks/2gzgn5h9nqkyy.js"
+CURSOR_MODELS = {
+    "Composer 2.5": ("composer-2.5", "standard"),
+    "Composer 2.5 (Fast)": ("composer-2.5-fast", "fast"),
+    "Grok 4.7": ("grok-4.7", "standard"),
+    "Grok 4.7 (Fast)": ("grok-4.7-fast", "fast"),
+    "Grok 4.7 500k": ("grok-4.7-long", "500k"),
+    "Grok 4.7 500k (Fast)": ("grok-4.7-fast-long", "500k fast"),
+    "Grok 4.6": ("grok-4.6", "standard"),
+    "Grok 4.6 (Fast)": ("grok-4.6-fast", "fast"),
+    "Grok 4.5": ("grok-4.5", "standard"),
+    "Grok 4.5 (Fast)": ("grok-4.5-fast", "fast"),
+    "Claude Fable 5.1": ("claude-fable-5-1", "standard"),
+    "Claude Haiku 5.5": ("claude-haiku-5-5", "standard"),
+    "Claude Opus 5.5": ("claude-opus-5-5", "standard"),
+    "Claude Sonnet 5.5": ("claude-sonnet-5-5", "standard"),
+    "Gemini 3.1 Pro": ("gemini-3.1-pro", "standard"),
+    "Gemini 3.8 Flash": ("gemini-3.8-flash", "standard"),
+    "Gemini 4 Argon": ("gemini-4-argon", "standard"),
+    "GPT-5.6 Luna": ("gpt-5.6-luna", "standard"),
+    "GPT-5.6 Sol": ("gpt-5.6-sol", "standard"),
+    "GPT-5.6 Terra": ("gpt-5.6-terra", "standard"),
+    "Muse Wonder": ("muse-wonder-1.0", "standard"),
+}
+
+
+class PricingTables(HTMLParser):
+    """Read only HTML table cells; scripts and surrounding prose are not data."""
+    def __init__(self):
+        super().__init__(convert_charrefs=True)
+        self.tables = []
+        self.table = None
+        self.row = None
+        self.cell = None
+
+    def handle_starttag(self, tag, attrs):
+        if tag == "table":
+            if self.table is not None:
+                raise ValueError("cursor: nested pricing table")
+            self.table = []
+        elif self.table is not None and tag == "tr":
+            self.row = []
+        elif self.row is not None and tag in ("th", "td"):
+            self.cell = []
+        elif self.cell is not None and tag == "br":
+            self.cell.append(" ")
+
+    def handle_data(self, data):
+        if self.cell is not None:
+            self.cell.append(data)
+
+    def handle_endtag(self, tag):
+        if tag in ("th", "td") and self.cell is not None:
+            self.row.append(" ".join("".join(self.cell).split()))
+            self.cell = None
+        elif tag == "tr" and self.row is not None:
+            self.table.append(self.row)
+            self.row = None
+        elif tag == "table" and self.table is not None:
+            self.tables.append(self.table)
+            self.table = None
+
+
+def cursor_rate(cell):
+    if cell.strip() in ("-", "–", "—"):
+        return None
+    match = re.fullmatch(r"\$([0-9]+(?:\.[0-9]+)?)", cell.strip())
+    if not match:
+        raise ValueError(f"cursor: unrecognized USD/million price {cell!r}")
+    value = float(match.group(1))
+    if not valid_rate(value):
+        raise ValueError("cursor: invalid price")
+    return value
+
+
+def parse_cursor(raw):
+    parser = PricingTables()
+    parser.feed(raw.decode("utf-8"))
+    parser.close()
+    required = ("Name", "Input", "Cache Write", "Cache Read", "Output")
+    records = {}
+    unmapped = []
+    rows_seen = set()
+    for table in parser.tables:
+        if not table or not all(header in table[0] for header in required):
+            continue
+        headers = table[0]
+        positions = {header: headers.index(header) for header in required}
+        for row in table[1:]:
+            if not row:
+                continue
+            if len(row) != len(headers):
+                raise ValueError("cursor: malformed pricing table row")
+            label = row[positions["Name"]]
+            costs = {field: cursor_rate(row[positions[header]]) for field, header in
+                     (("input", "Input"), ("cache_write", "Cache Write"),
+                      ("cache_read", "Cache Read"), ("output", "Output"))}
+            if costs["input"] is None or costs["output"] is None:
+                raise ValueError(f"cursor: missing base token prices for {label}")
+            rows_seen.add(label)
+            mapped = CURSOR_MODELS.get(label)
+            if mapped is None:
+                unmapped.append(label)
+                continue
+            model_id, variant = mapped
+            record = {"name": label, "cost": {k: v for k, v in costs.items()
+                                               if v is not None}, "variant": variant}
+            if model_id in records and records[model_id] != record:
+                raise ValueError(f"cursor: conflicting duplicate model ID {model_id}")
+            records[model_id] = record
+    if not records:
+        raise ValueError("cursor: no mapped official token pricing rows")
+    return {"models": records, "pricing_rows": len(rows_seen),
+            "unmapped_names": sorted(set(unmapped))}
+
+
+# Verified public model_uid values from the official HTML model catalog.
+DEVIN_MODEL_CATALOG = "https://docs.devin.ai/desktop/models"
+DEVIN_MODELS = {"swe-2-medium": "Medium", "swe-2-high": "High", "swe-2-max": "Max"}
+
+
+def parse_devin(raw):
+    text = raw.decode("utf-8").replace("\\$", "$")
+    # Only the explicit self-serve SWE-2 list-price sentence is authoritative
+    # here. Never read account tables, promotion prices or enterprise discounts.
+    section = re.search(r"\*\*Self-serve\*\*(.*?)\*\*Enterprise \(ACUs\)\*\*", text, re.S)
+    if section is None:
+        raise ValueError("devin: public self-serve section not found")
+    amount = r"\$([0-9]+(?:\.[0-9]+)?)/1M"
+    pattern = (r"SWE-2[^\n]*?List pricing \(" + amount + r" input, " + amount
+               + r" output, " + amount + r" cache input\) applies afterward\.")
+    matches = re.findall(pattern, section.group(1))
+    if len(matches) != 1:
+        raise ValueError("devin: unique SWE-2 public list-price statement not found")
+    if not re.search(r"SWE-2[^\n]*Medium, High, and Max", text):
+        raise ValueError("devin: SWE-2 reasoning variants not documented")
+    costs = dict(zip(("input", "output", "cache_read"), map(float, matches[0])))
+    if not all(valid_rate(value) for value in costs.values()):
+        raise ValueError("devin: invalid public list price")
+    return {"models": {model_id: {"name": f"SWE-2 {effort}", "cost": dict(costs),
+                                   "variant": effort.lower()}
+                       for model_id, effort in DEVIN_MODELS.items()}}
+
+
+def add_devin_records(result, devin):
+    replaced = 0
+    for model_id, model in sorted(devin["models"].items()):
+        key = f"devin/{model_id}"
+        replaced += key in result
+        record = {"litellm_provider": "devin", "mode": "chat", "name": model["name"],
+                  "_price_provenance": {"source": "devin", "source_key": model_id,
+                                        "source_name": model["name"], "url": SOURCES["devin"],
+                                        "model_id_catalog_url": DEVIN_MODEL_CATALOG,
+                                        "source_unit": "USD per million tokens"},
+                  "_source_cost": copy.deepcopy(model["cost"]),
+                  "_devin_pricing": {"basis": "public_list_price", "variant": model["variant"],
+                                     "excludes": ["subscription allowance", "promotions",
+                                                  "enterprise discounts", "account-specific billing"]},
+                  "_price_status": "computable"}
+        for field, value in model["cost"].items():
+            record[RATE_FIELDS[field]] = value / 1_000_000
+        result[key] = record
+    return len(devin["models"]) - replaced, replaced
+
+
 def fetch(name, url):
     last_error = None
     for attempt in range(3):
         try:
             request = Request(url, headers={
                 "User-Agent": "model-prices-sync/1.0 (+https://github.com/jiayuqi7813/model-prices)",
-                "Accept": "application/json",
+                "Accept": ("text/html" if name == "cursor" else "text/markdown"
+                           if name == "devin" else "application/json"),
             })
             with urlopen(request, timeout=60) as response:
                 raw = response.read()
-            data = decode(raw)
+            data = (parse_cursor(raw) if name == "cursor" else parse_devin(raw)
+                    if name == "devin" else decode(raw))
             validate_source(name, data)
             return data, {"url": url, "fetched_at": timestamp(),
                           "sha256": hashlib.sha256(raw).hexdigest(),
-                          "count": len(data) if name == "litellm" else sum(
-                              len(provider["models"]) for provider in data.values()),
+                          "count": (len(data["models"]) if name in ("cursor", "devin") else len(data)
+                                    if name == "litellm" else sum(
+                                        len(provider["models"]) for provider in data.values())),
                           "status": "ok"}
         except Exception as error:
             last_error = error
@@ -81,6 +255,11 @@ def validate_source(name, data):
             raise ValueError("litellm: expected model objects")
         if not any(computable(value) for key, value in data.items() if key != "sample_spec"):
             raise ValueError("litellm: no usable token prices")
+    elif name in ("cursor", "devin"):
+        if not data.get("models") or not all(
+                valid_rate(row["cost"].get("input")) and valid_rate(row["cost"].get("output"))
+                for row in data["models"].values()):
+            raise ValueError(f"{name}: no usable official token prices")
     else:
         for provider_id, provider in data.items():
             if (not isinstance(provider_id, str) or not isinstance(provider, dict)
@@ -94,7 +273,7 @@ def validate_source(name, data):
             raise ValueError("models.dev: empty model catalog")
 
 
-def build(litellm, modelsdev, source_meta):
+def build(litellm, modelsdev, source_meta, cursor, devin):
     # LiteLLM keys and every upstream dimension remain intact. sample_spec is a
     # documentation example containing fake zero prices, never a real model.
     result = {}
@@ -134,11 +313,51 @@ def build(litellm, modelsdev, source_meta):
             record["_price_status"] = "computable" if computable(record) else "unknown"
             result[key] = record
             added += 1
+    cursor_replaced = 0
+    for model_id, model in sorted(cursor["models"].items()):
+        key = f"cursor/{model_id}"
+        if key in result:
+            cursor_replaced += 1
+        record = {"litellm_provider": "cursor", "mode": "chat", "name": model["name"],
+                  "_price_provenance": {"source": "cursor", "source_key": model_id,
+                                        "source_name": model["name"], "url": SOURCES["cursor"],
+                                        "model_id_catalog_url": CURSOR_ID_CATALOG,
+                                        "source_unit": "USD per million tokens"},
+                  "_source_cost": copy.deepcopy(model["cost"]),
+                  "_cursor_pricing": {"variant": model["variant"],
+                                      "basis": "base list / additional usage estimate",
+                                      "excludes": ["monthly subscription", "plan token surcharges",
+                                                   "regional pricing", "conditional Max/Auto routing"]}}
+        if model_id.startswith("composer-2.5"):
+            record["_cursor_pricing"]["product_default_variant"] = "fast"
+        fast_id = model_id + "-fast"
+        if model_id == "grok-4.7-long":
+            fast_id = "grok-4.7-fast-long"
+        if fast_id in cursor["models"]:
+            record["_cursor_pricing"]["fast_model_id"] = fast_id
+        if model_id.startswith("grok-4.7"):
+            record["_cursor_pricing"]["long_context_threshold_input_tokens"] = 256000
+            record["_cursor_pricing"]["long_context_model_id"] = (
+                "grok-4.7-fast-long" if "fast" in model_id else "grok-4.7-long")
+            record["_cursor_pricing"]["applies_above_threshold"] = "long" in model_id
+            if "long" in model_id:
+                record["_cursor_pricing"]["short_context_model_id"] = (
+                    "grok-4.7-fast" if "fast" in model_id else "grok-4.7")
+        for field, value in model["cost"].items():
+            record[RATE_FIELDS[field]] = value / 1_000_000
+        record["_price_status"] = "computable"
+        result[key] = record
+    devin_added, devin_replaced = add_devin_records(result, devin)
     result["_meta"] = {"schema_version": 1, "generated_at": timestamp(),
                        "currency": "USD", "token_rate_unit": "USD per token",
                        "sources": source_meta,
                        "record_count": len(result), "modelsdev_added": added,
-                       "modelsdev_existing_keys_skipped": skipped}
+                       "modelsdev_existing_keys_skipped": skipped,
+                       "devin_added": devin_added, "devin_replaced_aggregate_keys": devin_replaced,
+                       "cursor_added": len(cursor["models"]) - cursor_replaced,
+                       "cursor_replaced_aggregate_keys": cursor_replaced,
+                       "cursor_pricing_rows": cursor["pricing_rows"],
+                       "cursor_unmapped_names": cursor["unmapped_names"]}
     validate_feed(result)
     return result
 
@@ -156,7 +375,7 @@ def validate_feed(data):
     except (KeyError, TypeError, AttributeError, ValueError) as error:
         raise ValueError("Invalid generated_at UTC timestamp") from error
     if set(meta.get("sources", {})) != set(SOURCES):
-        raise ValueError("Both required source metadata entries must be present")
+        raise ValueError("All required source metadata entries must be present")
     for name, details in meta["sources"].items():
         if (details.get("status") != "ok" or details.get("url") != SOURCES[name]
                 or not isinstance(details.get("count"), int) or details["count"] <= 0
@@ -205,11 +424,12 @@ def main():
             data = decode(args.output.read_bytes())
         else:
             data_by_source, meta = {}, {}
-            # Nothing is written until both required sources fetch and validate.
+            # Nothing is written until all required sources fetch and validate.
             for name, url in SOURCES.items():
                 data_by_source[name], meta[name] = fetch(name, url)
                 print(f"Fetched {name}: {meta[name]['count']} source entries", flush=True)
-            data = build(data_by_source["litellm"], data_by_source["models.dev"], meta)
+            data = build(data_by_source["litellm"], data_by_source["models.dev"], meta,
+                         data_by_source["cursor"], data_by_source["devin"])
             atomic_write(args.output, data)
         usable = validate_feed(data)
         print(f"Validated {len(data) - 1} records ({usable} computable): {args.output}")
