@@ -1,0 +1,38 @@
+name: Sync model prices
+
+on:
+  schedule:
+    - cron: '17 3 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-model-prices
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    if: github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.13'
+      - name: Fetch and validate both required sources
+        run: python scripts/sync_prices.py
+      - name: Validate the published JSON
+        run: python scripts/sync_prices.py --check
+      - name: Commit the snapshot when changed
+        run: |
+          git add -- prices.json
+          if git diff --cached --quiet -- prices.json; then
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'chore: sync model prices' -- prices.json
+          git push origin HEAD:"${{ github.event.repository.default_branch }}"
