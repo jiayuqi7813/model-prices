@@ -3023,7 +3023,7 @@
   },
   "_meta": {
     "currency": "USD",
-    "generated_at": "2026-10-25T16:18:23Z",
+    "generated_at": "2026-10-25T16:19:20Z",
     "modelsdev_added": 8564,
     "modelsdev_existing_keys_skipped": 365,
     "record_count": 12871,
@@ -3031,14 +3031,14 @@
     "sources": {
       "litellm": {
         "count": 4308,
-        "fetched_at": "2026-10-25T16:16:40Z",
+        "fetched_at": "2026-10-25T16:19:19Z",
         "sha256": "12ea25ddb6f2427bf7be2550b5a160d8659136d8747cfddf62327701591d2226",
         "status": "ok",
         "url": "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json"
       },
       "models.dev": {
         "count": 8929,
-        "fetched_at": "2026-10-25T16:18:23Z",
+        "fetched_at": "2026-10-25T16:19:20Z",
         "sha256": "9ee57c10c7666927a6179a7fee9a621702d56f2e559048abb0e32c92a42ad006",
         "status": "ok",
         "url": "https://models.dev/api.json"
