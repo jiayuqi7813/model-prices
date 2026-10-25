@@ -3029,7 +3029,7 @@
     "cursor_unmapped_names": [],
     "devin_added": 3,
     "devin_replaced_aggregate_keys": 0,
-    "generated_at": "2026-10-25T16:32:30Z",
+    "generated_at": "2026-10-25T16:35:31Z",
     "modelsdev_added": 8564,
     "modelsdev_existing_keys_skipped": 365,
     "record_count": 12895,
@@ -3037,28 +3037,28 @@
     "sources": {
       "cursor": {
         "count": 21,
-        "fetched_at": "2026-10-25T16:30:12Z",
-        "sha256": "0ded5a9837f893c883cdf55d9b8349ce9547f88d22a47fb5d530e41937b6d151",
+        "fetched_at": "2026-10-25T16:35:30Z",
+        "sha256": "d79fd36274b3bce2335116538efb767e735af4bbb4fd0ac4d7b53177e6db3672",
         "status": "ok",
         "url": "https://cursor.com/docs/models-and-pricing"
       },
       "devin": {
         "count": 3,
-        "fetched_at": "2026-10-25T16:31:38Z",
+        "fetched_at": "2026-10-25T16:35:30Z",
         "sha256": "70491626939e992a1eab9b474d5514f3575be25c72d0e938b2926c88a8c70072",
         "status": "ok",
         "url": "https://docs.devin.ai/desktop/models.md"
       },
       "litellm": {
         "count": 4308,
-        "fetched_at": "2026-10-25T16:29:41Z",
+        "fetched_at": "2026-10-25T16:35:30Z",
         "sha256": "12ea25ddb6f2427bf7be2550b5a160d8659136d8747cfddf62327701591d2226",
         "status": "ok",
         "url": "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json"
       },
       "models.dev": {
         "count": 8929,
-        "fetched_at": "2026-10-25T16:30:08Z",
+        "fetched_at": "2026-10-25T16:35:30Z",
         "sha256": "e1dfb03ceb19a8506adab90761d4b7fed602d1905217a41888870deeb626bdc0",
         "status": "ok",
         "url": "https://models.dev/api.json"
