@@ -20,6 +20,7 @@ SOURCES = {
     "models.dev": "https://models.dev/api.json",
     "cursor": "https://cursor.com/docs/models-and-pricing",
     "devin": "https://docs.devin.ai/desktop/models.md",
+    "grok": "https://docs.x.ai/developers/pricing.md",
 }
 RATE_FIELDS = {
     "input": "input_cost_per_token",
@@ -219,23 +220,83 @@ def add_devin_records(result, devin):
     return len(devin["models"]) - replaced, replaced
 
 
+# Exact ID/name mapping manually verified in Grok Build CLI's advertised catalog.
+# The public pricing section supplies rates, not a public xAI API model ID.
+def parse_grok(raw):
+    text = raw.decode("utf-8")
+    sections = re.findall(
+        r"^## Grok 4\.7 Fast pricing \(Cursor and Grok Build only\)\s*\n(.*?)(?=^## |\Z)",
+        text, re.M | re.S)
+    if len(sections) != 1:
+        raise ValueError("grok: unique official Fast pricing section not found")
+    section = sections[0]
+    if ("not available on the public xAI API" not in section
+            or "prompt exceeds 200k tokens" not in section):
+        raise ValueError("grok: Fast product availability or context boundary changed")
+    rows = [[cell.strip() for cell in line.strip().strip("|").split("|")]
+            for line in section.splitlines() if line.strip().startswith("|")]
+    if (len(rows) != 4 or rows[0] != ["Prompt tokens", "Input", "Cached input", "Output"]
+            or len(rows[1]) != 4 or not all(re.fullmatch(r":?-{3,}:?", c) for c in rows[1])):
+        raise ValueError("grok: unrecognized Fast pricing table")
+    costs = {}
+    for row, label, suffix in ((rows[2], "Below 200k", ""),
+                               (rows[3], "Above 200k", "_above_200k_tokens")):
+        if len(row) != 4 or row[0] != label:
+            raise ValueError("grok: missing or ambiguous context pricing row")
+        for field, cell in zip(("input", "cache_read", "output"), row[1:]):
+            match = re.fullmatch(r"\$([0-9]+(?:\.[0-9]+)?) / 1M", cell)
+            if match is None or not valid_rate(float(match.group(1))):
+                raise ValueError(f"grok: invalid USD/million price {cell!r}")
+            costs[field + suffix] = float(match.group(1))
+    return {"models": {"grok-4.7-build-fast": {"name": "Grok 4.7 Build Fast", "cost": costs}}}
+
+
+def add_grok_records(result, grok):
+    replaced = 0
+    for model_id, model in sorted(grok["models"].items()):
+        key = f"grok/{model_id}"
+        replaced += key in result
+        record = {"litellm_provider": "grok", "mode": "chat", "name": model["name"],
+                  "_price_provenance": {"source": "grok", "source_key": model_id,
+                                        "source_name": "Grok 4.7 Fast",
+                                        "model_id_source": "Grok Build CLI advertised model catalog",
+                                        "url": SOURCES["grok"],
+                                        "source_unit": "USD per million tokens"},
+                  "_source_cost": copy.deepcopy(model["cost"]),
+                  "_grok_pricing": {"basis": "Grok Build public token list price",
+                                    "public_xai_api_available": False,
+                                    "variant": "fast",
+                                    "long_context_threshold_input_tokens": 200000,
+                                    "long_context_comparison": "greater_than",
+                                    "long_context_applies_to": "all request tokens",
+                                    "excludes": ["subscription allowance", "free tier",
+                                                 "account-specific billing"]},
+                  "_price_status": "computable"}
+        for field in ("input", "cache_read", "output"):
+            for suffix in ("", "_above_200k_tokens"):
+                record[RATE_FIELDS[field] + suffix] = model["cost"][field + suffix] / 1_000_000
+        result[key] = record
+    return len(grok["models"]) - replaced, replaced
+
+
 def fetch(name, url):
     last_error = None
     for attempt in range(3):
         try:
             request = Request(url, headers={
                 "User-Agent": "model-prices-sync/1.0 (+https://github.com/jiayuqi7813/model-prices)",
+                # xAI's explicit .md endpoint returns 404 for Accept: text/markdown.
                 "Accept": ("text/html" if name == "cursor" else "text/markdown"
-                           if name == "devin" else "application/json"),
+                           if name == "devin" else "*/*" if name == "grok" else "application/json"),
             })
             with urlopen(request, timeout=60) as response:
                 raw = response.read()
             data = (parse_cursor(raw) if name == "cursor" else parse_devin(raw)
-                    if name == "devin" else decode(raw))
+                    if name == "devin" else parse_grok(raw) if name == "grok" else decode(raw))
             validate_source(name, data)
             return data, {"url": url, "fetched_at": timestamp(),
                           "sha256": hashlib.sha256(raw).hexdigest(),
-                          "count": (len(data["models"]) if name in ("cursor", "devin") else len(data)
+                          "count": (len(data["models"]) if name in ("cursor", "devin", "grok") else len(data)
                                     if name == "litellm" else sum(
                                         len(provider["models"]) for provider in data.values())),
                           "status": "ok"}
@@ -255,11 +316,18 @@ def validate_source(name, data):
             raise ValueError("litellm: expected model objects")
         if not any(computable(value) for key, value in data.items() if key != "sample_spec"):
             raise ValueError("litellm: no usable token prices")
-    elif name in ("cursor", "devin"):
+    elif name in ("cursor", "devin", "grok"):
         if not data.get("models") or not all(
                 valid_rate(row["cost"].get("input")) and valid_rate(row["cost"].get("output"))
                 for row in data["models"].values()):
             raise ValueError(f"{name}: no usable official token prices")
+        if name == "grok":
+            if set(data["models"]) != {"grok-4.7-build-fast"} or not all(
+                    valid_rate(row["cost"].get(field + suffix))
+                    for row in data["models"].values()
+                    for field in ("input", "cache_read", "output")
+                    for suffix in ("", "_above_200k_tokens")):
+                raise ValueError("grok: missing model or context prices")
     else:
         for provider_id, provider in data.items():
             if (not isinstance(provider_id, str) or not isinstance(provider, dict)
@@ -273,7 +341,7 @@ def validate_source(name, data):
             raise ValueError("models.dev: empty model catalog")
 
 
-def build(litellm, modelsdev, source_meta, cursor, devin):
+def build(litellm, modelsdev, source_meta, cursor, devin, grok):
     # LiteLLM keys and every upstream dimension remain intact. sample_spec is a
     # documentation example containing fake zero prices, never a real model.
     result = {}
@@ -348,12 +416,14 @@ def build(litellm, modelsdev, source_meta, cursor, devin):
         record["_price_status"] = "computable"
         result[key] = record
     devin_added, devin_replaced = add_devin_records(result, devin)
+    grok_added, grok_replaced = add_grok_records(result, grok)
     result["_meta"] = {"schema_version": 1, "generated_at": timestamp(),
                        "currency": "USD", "token_rate_unit": "USD per token",
                        "sources": source_meta,
                        "record_count": len(result), "modelsdev_added": added,
                        "modelsdev_existing_keys_skipped": skipped,
                        "devin_added": devin_added, "devin_replaced_aggregate_keys": devin_replaced,
+                       "grok_added": grok_added, "grok_replaced_aggregate_keys": grok_replaced,
                        "cursor_added": len(cursor["models"]) - cursor_replaced,
                        "cursor_replaced_aggregate_keys": cursor_replaced,
                        "cursor_pricing_rows": cursor["pricing_rows"],
@@ -384,6 +454,8 @@ def validate_feed(data):
     records = [(key, value) for key, value in data.items() if key != "_meta"]
     if not records or meta.get("record_count") != len(records):
         raise ValueError("Empty feed or record count mismatch")
+    if data.get("grok/grok-4.7-build-fast", {}).get("_price_provenance", {}).get("source") != "grok":
+        raise ValueError("Missing official Grok Build Fast record")
     usable = 0
     for key, record in records:
         if not isinstance(record, dict) or not record.get("_price_provenance"):
@@ -391,6 +463,11 @@ def validate_feed(data):
         expected = "computable" if computable(record) else "unknown"
         if record.get("_price_status") != expected:
             raise ValueError(f"Incorrect price status: {key}")
+        if record["_price_provenance"].get("source") == "grok":
+            for field in ("input_cost_per_token", "cache_read_input_token_cost", "output_cost_per_token"):
+                if not all(valid_rate(record.get(field + suffix))
+                           for suffix in ("", "_above_200k_tokens")):
+                    raise ValueError(f"Missing Grok context price: {key}")
         usable += expected == "computable"
     if not usable:
         raise ValueError("Feed has no computable records")
@@ -429,7 +506,7 @@ def main():
                 data_by_source[name], meta[name] = fetch(name, url)
                 print(f"Fetched {name}: {meta[name]['count']} source entries", flush=True)
             data = build(data_by_source["litellm"], data_by_source["models.dev"], meta,
-                         data_by_source["cursor"], data_by_source["devin"])
+                         data_by_source["cursor"], data_by_source["devin"], data_by_source["grok"])
             atomic_write(args.output, data)
         usable = validate_feed(data)
         print(f"Validated {len(data) - 1} records ({usable} computable): {args.output}")

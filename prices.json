@@ -3029,37 +3029,46 @@
     "cursor_unmapped_names": [],
     "devin_added": 3,
     "devin_replaced_aggregate_keys": 0,
-    "generated_at": "2026-10-25T16:35:31Z",
+    "generated_at": "2026-10-25T17:38:57Z",
+    "grok_added": 1,
+    "grok_replaced_aggregate_keys": 0,
     "modelsdev_added": 8564,
     "modelsdev_existing_keys_skipped": 365,
-    "record_count": 12895,
+    "record_count": 12896,
     "schema_version": 1,
     "sources": {
       "cursor": {
         "count": 21,
-        "fetched_at": "2026-10-25T16:35:30Z",
-        "sha256": "d79fd36274b3bce2335116538efb767e735af4bbb4fd0ac4d7b53177e6db3672",
+        "fetched_at": "2026-10-25T17:38:55Z",
+        "sha256": "a64d2807bc382e80a23cf50bd4abdbe3d8f26f7d50f5c11db32d3403143da161",
         "status": "ok",
         "url": "https://cursor.com/docs/models-and-pricing"
       },
       "devin": {
         "count": 3,
-        "fetched_at": "2026-10-25T16:35:30Z",
+        "fetched_at": "2026-10-25T17:38:56Z",
         "sha256": "70491626939e992a1eab9b474d5514f3575be25c72d0e938b2926c88a8c70072",
         "status": "ok",
         "url": "https://docs.devin.ai/desktop/models.md"
       },
+      "grok": {
+        "count": 1,
+        "fetched_at": "2026-10-25T17:38:57Z",
+        "sha256": "38a54093015ef837678a0e3e0b2ab36f888adf867d82344ff4f46c8170c00db5",
+        "status": "ok",
+        "url": "https://docs.x.ai/developers/pricing.md"
+      },
       "litellm": {
         "count": 4308,
-        "fetched_at": "2026-10-25T16:35:30Z",
+        "fetched_at": "2026-10-25T17:38:10Z",
         "sha256": "12ea25ddb6f2427bf7be2550b5a160d8659136d8747cfddf62327701591d2226",
         "status": "ok",
         "url": "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json"
       },
       "models.dev": {
         "count": 8929,
-        "fetched_at": "2026-10-25T16:35:30Z",
-        "sha256": "e1dfb03ceb19a8506adab90761d4b7fed602d1905217a41888870deeb626bdc0",
+        "fetched_at": "2026-10-25T17:38:50Z",
+        "sha256": "5dd193706ecbe6447f150c3b7ccbdbeb54965601e1c775b28912c66cd6046497",
         "status": "ok",
         "url": "https://models.dev/api.json"
       }
@@ -119744,6 +119753,47 @@
     "max_tokens": 32768,
     "output_cost_per_token": 5.13e-07
   },
+  "grok/grok-4.7-build-fast": {
+    "_grok_pricing": {
+      "basis": "Grok Build public token list price",
+      "excludes": [
+        "subscription allowance",
+        "free tier",
+        "account-specific billing"
+      ],
+      "long_context_applies_to": "all request tokens",
+      "long_context_comparison": "greater_than",
+      "long_context_threshold_input_tokens": 200000,
+      "public_xai_api_available": false,
+      "variant": "fast"
+    },
+    "_price_provenance": {
+      "model_id_source": "Grok Build CLI advertised model catalog",
+      "source": "grok",
+      "source_key": "grok-4.7-build-fast",
+      "source_name": "Grok 4.7 Fast",
+      "source_unit": "USD per million tokens",
+      "url": "https://docs.x.ai/developers/pricing.md"
+    },
+    "_price_status": "computable",
+    "_source_cost": {
+      "cache_read": 1.0,
+      "cache_read_above_200k_tokens": 1.5,
+      "input": 4.0,
+      "input_above_200k_tokens": 6.0,
+      "output": 12.0,
+      "output_above_200k_tokens": 18.0
+    },
+    "cache_read_input_token_cost": 1e-06,
+    "cache_read_input_token_cost_above_200k_tokens": 1.5e-06,
+    "input_cost_per_token": 4e-06,
+    "input_cost_per_token_above_200k_tokens": 6e-06,
+    "litellm_provider": "grok",
+    "mode": "chat",
+    "name": "Grok 4.7 Build Fast",
+    "output_cost_per_token": 1.2e-05,
+    "output_cost_per_token_above_200k_tokens": 1.8e-05
+  },
   "groq/allam-2-7b": {
     "_price_provenance": {
       "provider_id": "groq",
@@ -139866,16 +139916,16 @@
     },
     "_price_status": "computable",
     "_source_cost": {
-      "cache_read": 0.17,
-      "input": 0.171,
-      "output": 9.3421
+      "cache_read": 0.142,
+      "input": 0.152,
+      "output": 16
     },
-    "cache_read_input_token_cost": 1.7000000000000001e-07,
-    "input_cost_per_token": 1.71e-07,
+    "cache_read_input_token_cost": 1.4199999999999997e-07,
+    "input_cost_per_token": 1.5199999999999998e-07,
     "litellm_provider": "kilo",
     "max_output_tokens": 943718,
     "max_tokens": 1048576,
-    "output_cost_per_token": 9.3421e-06
+    "output_cost_per_token": 1.6e-05
   },
   "kilo/~openai/gpt-astra-latest": {
     "_price_provenance": {
@@ -179695,17 +179745,17 @@
     },
     "_price_status": "computable",
     "_source_cost": {
-      "cache_read": 0.042,
-      "input": 0.834,
-      "output": 2.501
+      "cache_read": 0.0378,
+      "input": 0.7506,
+      "output": 2.2509
     },
-    "cache_read_input_token_cost": 4.2000000000000006e-08,
-    "input_cost_per_token": 8.34e-07,
+    "cache_read_input_token_cost": 3.78e-08,
+    "input_cost_per_token": 7.506000000000001e-07,
     "litellm_provider": "nano-gpt",
     "max_input_tokens": 1048576,
     "max_output_tokens": 64000,
     "max_tokens": 1048576,
-    "output_cost_per_token": 2.501e-06
+    "output_cost_per_token": 2.2509e-06
   },
   "nano-gpt/thinkingmachines/Inkling-Small": {
     "_price_provenance": {
@@ -211671,16 +211721,16 @@
     },
     "_price_status": "computable",
     "_source_cost": {
-      "cache_read": 0.17,
-      "input": 0.171,
-      "output": 9.3421
+      "cache_read": 0.216,
+      "input": 0.226,
+      "output": 16
     },
-    "cache_read_input_token_cost": 1.7000000000000001e-07,
-    "input_cost_per_token": 1.71e-07,
+    "cache_read_input_token_cost": 2.16e-07,
+    "input_cost_per_token": 2.26e-07,
     "litellm_provider": "openrouter",
     "max_output_tokens": 943718,
     "max_tokens": 1048576,
-    "output_cost_per_token": 9.3421e-06
+    "output_cost_per_token": 1.6e-05
   },
   "openrouter/~openai/gpt-astra-latest": {
     "_price_provenance": {
