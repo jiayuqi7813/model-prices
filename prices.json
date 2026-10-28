@@ -2541,6 +2541,26 @@
     "max_tokens": 1048576,
     "output_cost_per_token": 1.5e-05
   },
+  "302ai/kimi-k3.1-pro": {
+    "_price_provenance": {
+      "provider_id": "302ai",
+      "source": "models.dev",
+      "source_key": "kimi-k3.1-pro",
+      "source_unit": "USD per million tokens"
+    },
+    "_price_status": "computable",
+    "_source_cost": {
+      "cache_read": 0.24,
+      "input": 2.4,
+      "output": 12
+    },
+    "cache_read_input_token_cost": 2.4e-07,
+    "input_cost_per_token": 2.4e-06,
+    "litellm_provider": "302ai",
+    "max_output_tokens": 131072,
+    "max_tokens": 1048576,
+    "output_cost_per_token": 1.2e-05
+  },
   "302ai/ministral-14b-2512": {
     "_price_provenance": {
       "provider_id": "302ai",
@@ -3025,46 +3045,46 @@
     "cursor_unmapped_names": [],
     "devin_added": 3,
     "devin_replaced_aggregate_keys": 0,
-    "generated_at": "2026-10-27T09:03:57Z",
+    "generated_at": "2026-10-28T09:44:05Z",
     "grok_added": 1,
     "grok_replaced_aggregate_keys": 0,
-    "modelsdev_added": 8581,
-    "modelsdev_existing_keys_skipped": 365,
-    "record_count": 12929,
+    "modelsdev_added": 8568,
+    "modelsdev_existing_keys_skipped": 372,
+    "record_count": 12925,
     "schema_version": 1,
     "sources": {
       "cursor": {
         "count": 21,
-        "fetched_at": "2026-10-27T09:03:53Z",
-        "sha256": "2414a20907237311df1006997751968275db866058515f6f7b27faf4546de9d7",
+        "fetched_at": "2026-10-28T09:44:02Z",
+        "sha256": "180db5dd4c2820659bc1b5123f1a6d9832885bdac7ca3290b759621b6c74120f",
         "status": "ok",
         "url": "https://cursor.com/docs/models-and-pricing"
       },
       "devin": {
         "count": 3,
-        "fetched_at": "2026-10-27T09:03:56Z",
-        "sha256": "70491626939e992a1eab9b474d5514f3575be25c72d0e938b2926c88a8c70072",
+        "fetched_at": "2026-10-28T09:44:04Z",
+        "sha256": "7a95a1be127c15e7099debfc80c6bcfad12c41dd0b601c384c978c61c7f2cc41",
         "status": "ok",
         "url": "https://docs.devin.ai/desktop/models.md"
       },
       "grok": {
         "count": 1,
-        "fetched_at": "2026-10-27T09:03:57Z",
-        "sha256": "13d7d8cf7a8861da5368ee5284b06994dd82dc323da7e8fbe08eee06bd827d50",
+        "fetched_at": "2026-10-28T09:44:05Z",
+        "sha256": "f5ae5d81206d855b814bd76f111e6257736502565ac3cec5eb8966aff11bda03",
         "status": "ok",
         "url": "https://docs.x.ai/developers/pricing.md"
       },
       "litellm": {
-        "count": 4324,
-        "fetched_at": "2026-10-27T09:03:52Z",
-        "sha256": "1faeeb3b9f7c974445a1377db267551c90b3b2748918f106e6fe2d54b8938d07",
+        "count": 4333,
+        "fetched_at": "2026-10-28T09:44:01Z",
+        "sha256": "9d7ca6054872b7168c63d4d28c4a0712f38099a2f4ce736487bc45e819db645a",
         "status": "ok",
         "url": "https://raw.githubusercontent.com/BerriAI/litellm/main/model_prices_and_context_window.json"
       },
       "models.dev": {
-        "count": 8946,
-        "fetched_at": "2026-10-27T09:03:53Z",
-        "sha256": "e364aaf55c951c7f6cc3bc7e1042e402a1852d885b9aade3318d1806a01fb44b",
+        "count": 8940,
+        "fetched_at": "2026-10-28T09:44:02Z",
+        "sha256": "2b7bc31889088e3b899fe4a348f54f56c8603140a7a723595b55a02df6fb0127",
         "status": "ok",
         "url": "https://models.dev/api.json"
       }
@@ -21184,6 +21204,47 @@
     "max_tokens": 1050000,
     "output_cost_per_token": 1e-05
   },
+  "amazon-bedrock/global.openai.gpt-6.1-terra": {
+    "_price_provenance": {
+      "provider_id": "amazon-bedrock",
+      "source": "models.dev",
+      "source_key": "global.openai.gpt-6.1-terra",
+      "source_unit": "USD per million tokens"
+    },
+    "_price_status": "computable",
+    "_source_cost": {
+      "cache_read": 0.05,
+      "cache_write": 1.25,
+      "context_over_200k": {
+        "cache_read": 0.1,
+        "cache_write": 2.5,
+        "input": 2,
+        "output": 7.5
+      },
+      "input": 1,
+      "output": 5,
+      "tiers": [
+        {
+          "cache_read": 0.1,
+          "cache_write": 2.5,
+          "input": 2,
+          "output": 7.5,
+          "tier": {
+            "size": 272000,
+            "type": "context"
+          }
+        }
+      ]
+    },
+    "cache_creation_input_token_cost": 1.25e-06,
+    "cache_read_input_token_cost": 5.0000000000000004e-08,
+    "input_cost_per_token": 1e-06,
+    "litellm_provider": "amazon-bedrock",
+    "max_input_tokens": 922000,
+    "max_output_tokens": 128000,
+    "max_tokens": 1050000,
+    "output_cost_per_token": 5e-06
+  },
   "amazon-bedrock/global.xai.grok-4.6": {
     "_price_provenance": {
       "provider_id": "amazon-bedrock",
@@ -22475,6 +22536,47 @@
     "max_tokens": 1050000,
     "output_cost_per_token": 1.1e-05
   },
+  "amazon-bedrock/openai.gpt-6.1-terra": {
+    "_price_provenance": {
+      "provider_id": "amazon-bedrock",
+      "source": "models.dev",
+      "source_key": "openai.gpt-6.1-terra",
+      "source_unit": "USD per million tokens"
+    },
+    "_price_status": "computable",
+    "_source_cost": {
+      "cache_read": 0.055,
+      "cache_write": 1.375,
+      "context_over_200k": {
+        "cache_read": 0.11,
+        "cache_write": 2.75,
+        "input": 2.2,
+        "output": 8.25
+      },
+      "input": 1.1,
+      "output": 5.5,
+      "tiers": [
+        {
+          "cache_read": 0.11,
+          "cache_write": 2.75,
+          "input": 2.2,
+          "output": 8.25,
+          "tier": {
+            "size": 272000,
+            "type": "context"
+          }
+        }
+      ]
+    },
+    "cache_creation_input_token_cost": 1.375e-06,
+    "cache_read_input_token_cost": 5.5e-08,
+    "input_cost_per_token": 1.1e-06,
+    "litellm_provider": "amazon-bedrock",
+    "max_input_tokens": 922000,
+    "max_output_tokens": 128000,
+    "max_tokens": 1050000,
+    "output_cost_per_token": 5.5e-06
+  },
   "amazon-bedrock/openai.gpt-oss-120b": {
     "_price_provenance": {
       "provider_id": "amazon-bedrock",
@@ -23653,6 +23755,47 @@
     "max_output_tokens": 128000,
     "max_tokens": 1050000,
     "output_cost_per_token": 1.1e-05
+  },
+  "amazon-bedrock/us.openai.gpt-6.1-terra": {
+    "_price_provenance": {
+      "provider_id": "amazon-bedrock",
+      "source": "models.dev",
+      "source_key": "us.openai.gpt-6.1-terra",
+      "source_unit": "USD per million tokens"
+    },
+    "_price_status": "computable",
+    "_source_cost": {
+      "cache_read": 0.055,
+      "cache_write": 1.375,
+      "context_over_200k": {
+        "cache_read": 0.11,
+        "cache_write": 2.75,
+        "input": 2.2,
+        "output": 8.25
+      },
+      "input": 1.1,
+      "output": 5.5,
+      "tiers": [
+        {
+          "cache_read": 0.11,
+          "cache_write": 2.75,
+          "input": 2.2,
+          "output": 8.25,
+          "tier": {
+            "size": 272000,
+            "type": "context"
+          }
+        }
+      ]
+    },
+    "cache_creation_input_token_cost": 1.375e-06,
+    "cache_read_input_token_cost": 5.5e-08,
+    "input_cost_per_token": 1.1e-06,
+    "litellm_provider": "amazon-bedrock",
+    "max_input_tokens": 922000,
+    "max_output_tokens": 128000,
+    "max_tokens": 1050000,
+    "output_cost_per_token": 5.5e-06
   },
   "amazon-bedrock/us.writer.palmyra-x4-v1:0": {
     "_price_provenance": {
@@ -50411,7 +50554,11 @@
     "supports_response_schema": true,
     "supports_tool_choice": true,
     "supports_tool_search": true,
-    "supports_vision": true
+    "supports_vision": true,
+    "token_count_model": {
+      "litellm_provider": "bedrock",
+      "model": "anthropic.claude-haiku-4-5-20251001-v1:0"
+    }
   },
   "bedrock_mantle/anthropic.claude-haiku-5-5": {
     "_price_provenance": {
@@ -50505,7 +50652,12 @@
     "supports_tool_search": true,
     "supports_vision": true,
     "supports_xhigh_reasoning_effort": true,
-    "thinking_always_on": true
+    "thinking_always_on": true,
+    "token_count_model": {
+      "litellm_provider": "bedrock_mantle",
+      "model": "anthropic.claude-opus-5-5",
+      "region": "us-east-1"
+    }
   },
   "bedrock_mantle/anthropic.claude-sonnet-5-5": {
     "_price_provenance": {
@@ -50706,7 +50858,7 @@
     "input_cost_per_token": 2.75e-06,
     "input_cost_per_token_above_272k_tokens": 5.5e-06,
     "litellm_provider": "bedrock_mantle",
-    "max_input_tokens": 1050000,
+    "max_input_tokens": 922000,
     "max_output_tokens": 128000,
     "mode": "responses",
     "output_cost_per_token": 1.65e-05,
@@ -50750,7 +50902,7 @@
     "input_cost_per_token": 5.5e-06,
     "input_cost_per_token_above_272k_tokens": 1.1e-05,
     "litellm_provider": "bedrock_mantle",
-    "max_input_tokens": 1050000,
+    "max_input_tokens": 922000,
     "max_output_tokens": 128000,
     "mode": "responses",
     "output_cost_per_token": 3.3e-05,
@@ -50832,7 +50984,7 @@
     "input_cost_per_token": 2.2e-07,
     "input_cost_per_token_above_272k_tokens": 4.4e-07,
     "litellm_provider": "bedrock_mantle",
-    "max_input_tokens": 1050000,
+    "max_input_tokens": 922000,
     "max_output_tokens": 128000,
     "mode": "responses",
     "output_cost_per_token": 1.32e-06,
@@ -50880,7 +51032,7 @@
     "input_cost_per_token": 4.4e-06,
     "input_cost_per_token_above_272k_tokens": 8.8e-06,
     "litellm_provider": "bedrock_mantle",
-    "max_input_tokens": 1050000,
+    "max_input_tokens": 922000,
     "max_output_tokens": 128000,
     "mode": "responses",
     "output_cost_per_token": 2.2e-05,
@@ -50928,7 +51080,7 @@
     "input_cost_per_token": 2.2e-06,
     "input_cost_per_token_above_272k_tokens": 4.4e-06,
     "litellm_provider": "bedrock_mantle",
-    "max_input_tokens": 1050000,
+    "max_input_tokens": 922000,
     "max_output_tokens": 128000,
     "mode": "responses",
     "output_cost_per_token": 1.32e-05,
@@ -50982,7 +51134,7 @@
     "input_cost_per_token_above_272k_tokens_ultrafast": 0.000132,
     "input_cost_per_token_ultrafast": 6.6e-05,
     "litellm_provider": "bedrock_mantle",
-    "max_input_tokens": 1050000,
+    "max_input_tokens": 922000,
     "max_output_tokens": 128000,
     "mode": "responses",
     "output_cost_per_token": 5.5e-05,
@@ -51027,7 +51179,7 @@
     "input_cost_per_token": 1.1e-07,
     "input_cost_per_token_above_272k_tokens": 2.2e-07,
     "litellm_provider": "bedrock_mantle",
-    "max_input_tokens": 1050000,
+    "max_input_tokens": 922000,
     "max_output_tokens": 128000,
     "mode": "responses",
     "output_cost_per_token": 5.5e-07,
@@ -51070,7 +51222,7 @@
     "input_cost_per_token": 2.2e-06,
     "input_cost_per_token_above_272k_tokens": 4.4e-06,
     "litellm_provider": "bedrock_mantle",
-    "max_input_tokens": 1050000,
+    "max_input_tokens": 922000,
     "max_output_tokens": 128000,
     "mode": "responses",
     "output_cost_per_token": 1.1e-05,
@@ -51142,6 +51294,49 @@
     "supports_max_reasoning_effort": true,
     "supports_minimal_reasoning_effort": false,
     "supports_none_reasoning_effort": false,
+    "supports_prompt_cache_breakpoint": true,
+    "supports_prompt_caching": true,
+    "supports_reasoning": true,
+    "supports_response_schema": true,
+    "supports_tool_choice": true,
+    "supports_vision": true,
+    "supports_xhigh_reasoning_effort": true,
+    "use_openai_responses_path": true
+  },
+  "bedrock_mantle/openai.gpt-6.1-terra": {
+    "_price_provenance": {
+      "source": "litellm",
+      "source_key": "bedrock_mantle/openai.gpt-6.1-terra"
+    },
+    "_price_status": "computable",
+    "cache_creation_input_token_cost": 1.375e-06,
+    "cache_creation_input_token_cost_above_272k_tokens": 2.75e-06,
+    "cache_read_input_token_cost": 5.5e-08,
+    "cache_read_input_token_cost_above_272k_tokens": 1.1e-07,
+    "input_cost_per_token": 1.1e-06,
+    "input_cost_per_token_above_272k_tokens": 2.2e-06,
+    "litellm_provider": "bedrock_mantle",
+    "max_input_tokens": 922000,
+    "max_output_tokens": 128000,
+    "mode": "responses",
+    "output_cost_per_token": 5.5e-06,
+    "output_cost_per_token_above_272k_tokens": 8.25e-06,
+    "source": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-openai-gpt-6-1-terra.html",
+    "supported_endpoints": [
+      "/v1/chat/completions",
+      "/v1/responses"
+    ],
+    "supported_modalities": [
+      "text",
+      "image"
+    ],
+    "supported_output_modalities": [
+      "text"
+    ],
+    "supports_function_calling": true,
+    "supports_max_reasoning_effort": true,
+    "supports_minimal_reasoning_effort": false,
+    "supports_none_reasoning_effort": true,
     "supports_prompt_cache_breakpoint": true,
     "supports_prompt_caching": true,
     "supports_reasoning": true,
@@ -51471,10 +51666,11 @@
     "cache_read_input_token_cost": 3.3e-07,
     "input_cost_per_token": 3.3e-06,
     "litellm_provider": "bedrock_mantle",
-    "max_input_tokens": 1050000,
+    "max_input_tokens": 922000,
     "max_output_tokens": 128000,
     "mode": "responses",
     "output_cost_per_token": 1.98e-05,
+    "source": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-openai-gpt-54.md",
     "supported_endpoints": [
       "/v1/responses"
     ],
@@ -51611,7 +51807,12 @@
     "supports_tool_search": true,
     "supports_vision": true,
     "supports_xhigh_reasoning_effort": true,
-    "thinking_always_on": false
+    "thinking_always_on": false,
+    "token_count_model": {
+      "litellm_provider": "bedrock_mantle",
+      "model": "anthropic.claude-haiku-5-5",
+      "region": "us-gov-west-1"
+    }
   },
   "bedrock_mantle/us-gov-west-1/anthropic.claude-opus-5-5": {
     "_price_provenance": {
@@ -51650,7 +51851,12 @@
     "supports_tool_search": true,
     "supports_vision": true,
     "supports_xhigh_reasoning_effort": true,
-    "thinking_always_on": true
+    "thinking_always_on": true,
+    "token_count_model": {
+      "litellm_provider": "bedrock_mantle",
+      "model": "anthropic.claude-opus-5-5",
+      "region": "us-gov-west-1"
+    }
   },
   "bedrock_mantle/us-gov-west-1/anthropic.claude-sonnet-5-5": {
     "_price_provenance": {
@@ -51690,7 +51896,12 @@
     "supports_tool_search": true,
     "supports_vision": true,
     "supports_xhigh_reasoning_effort": true,
-    "thinking_always_on": true
+    "thinking_always_on": true,
+    "token_count_model": {
+      "litellm_provider": "bedrock_mantle",
+      "model": "anthropic.claude-sonnet-5-5",
+      "region": "us-gov-west-1"
+    }
   },
   "bedrock_mantle/us-gov-west-1/google.gemma-4-26b-a4b": {
     "_price_provenance": {
@@ -51770,7 +51981,7 @@
     "cache_read_input_token_cost": 3.375e-07,
     "input_cost_per_token": 3.375e-06,
     "litellm_provider": "bedrock_mantle",
-    "max_input_tokens": 1050000,
+    "max_input_tokens": 922000,
     "max_output_tokens": 128000,
     "mode": "responses",
     "output_cost_per_token": 2.025e-05,
@@ -51808,7 +52019,7 @@
     "input_cost_per_token": 2.7e-07,
     "input_cost_per_token_above_272k_tokens": 5.4e-07,
     "litellm_provider": "bedrock_mantle",
-    "max_input_tokens": 1050000,
+    "max_input_tokens": 922000,
     "max_output_tokens": 128000,
     "mode": "responses",
     "output_cost_per_token": 1.62e-06,
@@ -51848,7 +52059,7 @@
     "input_cost_per_token": 2.7e-06,
     "input_cost_per_token_above_272k_tokens": 5.4e-06,
     "litellm_provider": "bedrock_mantle",
-    "max_input_tokens": 1050000,
+    "max_input_tokens": 922000,
     "max_output_tokens": 128000,
     "mode": "responses",
     "output_cost_per_token": 1.62e-05,
@@ -62241,6 +62452,29 @@
     "max_tokens": 1050000,
     "output_cost_per_token": 1.1999e-05
   },
+  "cortecs/gpt-6.1-terra": {
+    "_price_provenance": {
+      "provider_id": "cortecs",
+      "source": "models.dev",
+      "source_key": "gpt-6.1-terra",
+      "source_unit": "USD per million tokens"
+    },
+    "_price_status": "computable",
+    "_source_cost": {
+      "cache_read": 0.059,
+      "cache_write": 1.47,
+      "input": 1.176,
+      "output": 5.882
+    },
+    "cache_creation_input_token_cost": 1.47e-06,
+    "cache_read_input_token_cost": 5.9e-08,
+    "input_cost_per_token": 1.1759999999999998e-06,
+    "litellm_provider": "cortecs",
+    "max_input_tokens": 922000,
+    "max_output_tokens": 128000,
+    "max_tokens": 1050000,
+    "output_cost_per_token": 5.882e-06
+  },
   "cortecs/gpt-oss-120b": {
     "_price_provenance": {
       "provider_id": "cortecs",
@@ -69698,15 +69932,17 @@
       "source_key": "databricks/databricks-openjev-qwen35-4b"
     },
     "_price_status": "computable",
-    "cache_creation_input_token_cost": 0.0,
-    "cache_read_input_token_cost": 0.0,
-    "input_cost_per_token": 0.0,
+    "cache_creation_input_token_cost": 4.2e-08,
+    "cache_read_input_token_cost": 4.2e-08,
+    "input_cost_per_token": 4.2e-08,
+    "input_dbu_cost_per_token": 6e-07,
     "litellm_provider": "databricks",
     "metadata": {
-      "notes": "Pay-per-token Foundation Model API decision endpoint (OpenJev, Qwen 3.5 4B) queried through the System One API. Databricks published no DBU rate for it as of 2026-10-07, so a deployment's model_info prices set the billed cost."
+      "notes": "Pay-per-token Foundation Model API decision endpoint (OpenJev, Qwen 3.5 4B) queried through the System One API. The serving-endpoints API lists it at 0.6 DBUs per 1M input tokens (input_price on the foundation_model entry, read 2026-10-27); input_cost_per_token is that dbu cost * $0.070, the same conversion as the other databricks rows. Output is free. Databricks publishes no cache rates for it, so cache tokens bill at the input rate."
     },
     "mode": "evaluation",
     "output_cost_per_token": 0.0,
+    "output_dbu_cost_per_token": 0.0,
     "source": "https://docs.databricks.com/aws/en/machine-learning/foundation-model-apis/supported-models"
   },
   "databricks/databricks-qwen3-embedding-0-6b": {
@@ -80104,26 +80340,6 @@
     "output_cost_per_reasoning_token": 5e-06,
     "output_cost_per_token": 5e-06
   },
-  "edenai/greenference/deepseek-v4.1-flash": {
-    "_price_provenance": {
-      "provider_id": "edenai",
-      "source": "models.dev",
-      "source_key": "greenference/deepseek-v4.1-flash",
-      "source_unit": "USD per million tokens"
-    },
-    "_price_status": "computable",
-    "_source_cost": {
-      "cache_read": 0.007,
-      "input": 0.22,
-      "output": 0.88
-    },
-    "cache_read_input_token_cost": 7e-09,
-    "input_cost_per_token": 2.2e-07,
-    "litellm_provider": "edenai",
-    "max_output_tokens": 384000,
-    "max_tokens": 1048576,
-    "output_cost_per_token": 8.8e-07
-  },
   "edenai/greenference/gpt-oss-20b": {
     "_price_provenance": {
       "provider_id": "edenai",
@@ -80153,16 +80369,16 @@
     },
     "_price_status": "computable",
     "_source_cost": {
-      "cache_read": 0.044752,
-      "input": 0.156632,
-      "output": 0.39158
+      "cache_read": 0.0446,
+      "input": 0.1561,
+      "output": 0.39025
     },
-    "cache_read_input_token_cost": 4.4752e-08,
-    "input_cost_per_token": 1.56632e-07,
+    "cache_read_input_token_cost": 4.46e-08,
+    "input_cost_per_token": 1.561e-07,
     "litellm_provider": "edenai",
     "max_output_tokens": 384000,
     "max_tokens": 1000000,
-    "output_cost_per_token": 3.9157999999999996e-07
+    "output_cost_per_token": 3.9025e-07
   },
   "edenai/greenpt/deepseek-v4.1-flash": {
     "_price_provenance": {
@@ -80173,16 +80389,16 @@
     },
     "_price_status": "computable",
     "_source_cost": {
-      "cache_read": 0.012307,
-      "input": 0.246136,
-      "output": 1.23068
+      "cache_read": 0.012265,
+      "input": 0.2453,
+      "output": 1.2265
     },
-    "cache_read_input_token_cost": 1.2307e-08,
-    "input_cost_per_token": 2.46136e-07,
+    "cache_read_input_token_cost": 1.2265e-08,
+    "input_cost_per_token": 2.453e-07,
     "litellm_provider": "edenai",
     "max_output_tokens": 384000,
     "max_tokens": 1000000,
-    "output_cost_per_token": 1.23068e-06
+    "output_cost_per_token": 1.2264999999999998e-06
   },
   "edenai/greenpt/gpt-oss-120b": {
     "_price_provenance": {
@@ -80193,14 +80409,14 @@
     },
     "_price_status": "computable",
     "_source_cost": {
-      "input": 0.22376,
-      "output": 0.78316
+      "input": 0.223,
+      "output": 0.7805
     },
-    "input_cost_per_token": 2.2375999999999999e-07,
+    "input_cost_per_token": 2.23e-07,
     "litellm_provider": "edenai",
     "max_output_tokens": 32768,
     "max_tokens": 128000,
-    "output_cost_per_token": 7.831599999999999e-07
+    "output_cost_per_token": 7.805e-07
   },
   "edenai/greenpt/llama-3.3-70b-instruct": {
     "_price_provenance": {
@@ -80211,14 +80427,14 @@
     },
     "_price_status": "computable",
     "_source_cost": {
-      "input": 1.23068,
-      "output": 1.23068
+      "input": 1.2265,
+      "output": 1.2265
     },
-    "input_cost_per_token": 1.23068e-06,
+    "input_cost_per_token": 1.2264999999999998e-06,
     "litellm_provider": "edenai",
     "max_output_tokens": 4096,
     "max_tokens": 128000,
-    "output_cost_per_token": 1.23068e-06
+    "output_cost_per_token": 1.2264999999999998e-06
   },
   "edenai/greenpt/qwen3-235b-a22b-instruct-2507": {
     "_price_provenance": {
@@ -80229,14 +80445,14 @@
     },
     "_price_status": "computable",
     "_source_cost": {
-      "input": 1.00692,
-      "output": 3.020759
+      "input": 1.0035,
+      "output": 3.0105
     },
-    "input_cost_per_token": 1.00692e-06,
+    "input_cost_per_token": 1.0035e-06,
     "litellm_provider": "edenai",
     "max_output_tokens": 16384,
     "max_tokens": 250000,
-    "output_cost_per_token": 3.020759e-06
+    "output_cost_per_token": 3.0105e-06
   },
   "edenai/groq/meta-llama/llama-prompt-guard-2-22m": {
     "_price_provenance": {
@@ -80347,14 +80563,14 @@
     },
     "_price_status": "computable",
     "_source_cost": {
-      "input": 0.33564,
-      "output": 0.44752
+      "input": 0.3345,
+      "output": 0.446
     },
-    "input_cost_per_token": 3.3564e-07,
+    "input_cost_per_token": 3.3450000000000004e-07,
     "litellm_provider": "edenai",
     "max_output_tokens": 262144,
     "max_tokens": 100000,
-    "output_cost_per_token": 4.4751999999999997e-07
+    "output_cost_per_token": 4.46e-07
   },
   "edenai/ionos/Qwen/Qwen3-Coder-Next": {
     "_price_provenance": {
@@ -80365,14 +80581,14 @@
     },
     "_price_status": "computable",
     "_source_cost": {
-      "input": 0.16782,
-      "output": 0.89504
+      "input": 0.16725,
+      "output": 0.892
     },
-    "input_cost_per_token": 1.6782e-07,
+    "input_cost_per_token": 1.6725000000000002e-07,
     "litellm_provider": "edenai",
     "max_output_tokens": 65536,
     "max_tokens": 128000,
-    "output_cost_per_token": 8.950399999999999e-07
+    "output_cost_per_token": 8.92e-07
   },
   "edenai/ionos/meta-llama/Llama-3.3-70B-Instruct": {
     "_price_provenance": {
@@ -80383,14 +80599,14 @@
     },
     "_price_status": "computable",
     "_source_cost": {
-      "input": 0.72722,
-      "output": 0.72722
+      "input": 0.72475,
+      "output": 0.72475
     },
-    "input_cost_per_token": 7.2722e-07,
+    "input_cost_per_token": 7.2475e-07,
     "litellm_provider": "edenai",
     "max_output_tokens": 4096,
     "max_tokens": 128000,
-    "output_cost_per_token": 7.2722e-07
+    "output_cost_per_token": 7.2475e-07
   },
   "edenai/ionos/openai/gpt-oss-120b": {
     "_price_provenance": {
@@ -80401,14 +80617,14 @@
     },
     "_price_status": "computable",
     "_source_cost": {
-      "input": 0.16782,
-      "output": 0.72722
+      "input": 0.16725,
+      "output": 0.72475
     },
-    "input_cost_per_token": 1.6782e-07,
+    "input_cost_per_token": 1.6725000000000002e-07,
     "litellm_provider": "edenai",
     "max_output_tokens": 32768,
     "max_tokens": 128000,
-    "output_cost_per_token": 7.2722e-07
+    "output_cost_per_token": 7.2475e-07
   },
   "edenai/meta/muse-spark-1.1": {
     "_price_provenance": {
@@ -82279,24 +82495,6 @@
     "max_tokens": 1050000,
     "output_cost_per_token": 2e-05
   },
-  "edenai/openai/o1-pro": {
-    "_price_provenance": {
-      "provider_id": "edenai",
-      "source": "models.dev",
-      "source_key": "openai/o1-pro",
-      "source_unit": "USD per million tokens"
-    },
-    "_price_status": "computable",
-    "_source_cost": {
-      "input": 150,
-      "output": 600
-    },
-    "input_cost_per_token": 0.00015,
-    "litellm_provider": "edenai",
-    "max_output_tokens": 100000,
-    "max_tokens": 200000,
-    "output_cost_per_token": 0.0006
-  },
   "edenai/openai/o3": {
     "_price_provenance": {
       "provider_id": "edenai",
@@ -82722,16 +82920,16 @@
     },
     "_price_status": "computable",
     "_source_cost": {
-      "cache_read": 0.089504,
-      "input": 0.44752,
-      "output": 0.89504
+      "cache_read": 0.0892,
+      "input": 0.446,
+      "output": 0.892
     },
-    "cache_read_input_token_cost": 8.9504e-08,
-    "input_cost_per_token": 4.4751999999999997e-07,
+    "cache_read_input_token_cost": 8.92e-08,
+    "input_cost_per_token": 4.46e-07,
     "litellm_provider": "edenai",
     "max_output_tokens": 384000,
     "max_tokens": 256000,
-    "output_cost_per_token": 8.950399999999999e-07
+    "output_cost_per_token": 8.92e-07
   },
   "edenai/scaleway/deepseek-v4.1-flash": {
     "_price_provenance": {
@@ -82742,16 +82940,16 @@
     },
     "_price_status": "computable",
     "_source_cost": {
-      "cache_read": 0.134256,
-      "input": 0.67128,
-      "output": 2.01384
+      "cache_read": 0.1338,
+      "input": 0.669,
+      "output": 2.007
     },
-    "cache_read_input_token_cost": 1.3425599999999998e-07,
-    "input_cost_per_token": 6.7128e-07,
+    "cache_read_input_token_cost": 1.338e-07,
+    "input_cost_per_token": 6.690000000000001e-07,
     "litellm_provider": "edenai",
     "max_output_tokens": 384000,
     "max_tokens": 256000,
-    "output_cost_per_token": 2.01384e-06
+    "output_cost_per_token": 2.007e-06
   },
   "edenai/scaleway/gemma-3-27b-it": {
     "_price_provenance": {
@@ -82780,14 +82978,14 @@
     },
     "_price_status": "computable",
     "_source_cost": {
-      "input": 0.16782,
-      "output": 0.67128
+      "input": 0.16725,
+      "output": 0.669
     },
-    "input_cost_per_token": 1.6782e-07,
+    "input_cost_per_token": 1.6725000000000002e-07,
     "litellm_provider": "edenai",
     "max_output_tokens": 32768,
     "max_tokens": 128000,
-    "output_cost_per_token": 6.7128e-07
+    "output_cost_per_token": 6.690000000000001e-07
   },
   "edenai/scaleway/llama-3.3-70b-instruct": {
     "_price_provenance": {
@@ -82798,14 +82996,14 @@
     },
     "_price_status": "computable",
     "_source_cost": {
-      "input": 1.00692,
-      "output": 1.00692
+      "input": 1.0035,
+      "output": 1.0035
     },
-    "input_cost_per_token": 1.00692e-06,
+    "input_cost_per_token": 1.0035e-06,
     "litellm_provider": "edenai",
     "max_output_tokens": 4096,
     "max_tokens": 128000,
-    "output_cost_per_token": 1.00692e-06
+    "output_cost_per_token": 1.0035e-06
   },
   "edenai/scaleway/qwen3-235b-a22b-instruct-2507": {
     "_price_provenance": {
@@ -82816,14 +83014,14 @@
     },
     "_price_status": "computable",
     "_source_cost": {
-      "input": 0.8391,
-      "output": 2.517299
+      "input": 0.83625,
+      "output": 2.50875
     },
-    "input_cost_per_token": 8.390999999999999e-07,
+    "input_cost_per_token": 8.3625e-07,
     "litellm_provider": "edenai",
     "max_output_tokens": 16384,
     "max_tokens": 250000,
-    "output_cost_per_token": 2.5172989999999998e-06
+    "output_cost_per_token": 2.50875e-06
   },
   "edenai/scaleway/qwen3-coder-30b-a3b-instruct": {
     "_price_provenance": {
@@ -83124,26 +83322,6 @@
     "max_output_tokens": 262144,
     "max_tokens": 262144,
     "output_cost_per_token": 2.8e-06
-  },
-  "edenai/together_ai/deepseek-ai/DeepSeek-V4-Flash-0731": {
-    "_price_provenance": {
-      "provider_id": "edenai",
-      "source": "models.dev",
-      "source_key": "together_ai/deepseek-ai/DeepSeek-V4-Flash-0731",
-      "source_unit": "USD per million tokens"
-    },
-    "_price_status": "computable",
-    "_source_cost": {
-      "cache_read": 0.03,
-      "input": 0.14,
-      "output": 0.28
-    },
-    "cache_read_input_token_cost": 3e-08,
-    "input_cost_per_token": 1.4e-07,
-    "litellm_provider": "edenai",
-    "max_output_tokens": 384000,
-    "max_tokens": 1048576,
-    "output_cost_per_token": 2.8e-07
   },
   "edenai/together_ai/deepseek-ai/DeepSeek-V4-Pro-0813": {
     "_price_provenance": {
@@ -100492,7 +100670,6 @@
     "cache_read_input_token_cost_batches": 1.25e-08,
     "cache_read_input_token_cost_flex": 1.25e-08,
     "cache_read_input_token_cost_priority": 4.5e-08,
-    "deprecation_date": "2027-06-28",
     "input_cost_per_image": 0.00028,
     "input_cost_per_token": 2.5e-07,
     "input_cost_per_token_batches": 1.25e-07,
@@ -108551,7 +108728,7 @@
     "input_cost_per_token": 2.5e-06,
     "input_cost_per_token_above_272k_tokens": 5e-06,
     "litellm_provider": "bedrock_converse",
-    "max_input_tokens": 1050000,
+    "max_input_tokens": 922000,
     "max_output_tokens": 128000,
     "mode": "chat",
     "output_cost_per_token": 1.5e-05,
@@ -108587,7 +108764,7 @@
     "input_cost_per_token": 5e-06,
     "input_cost_per_token_above_272k_tokens": 1e-05,
     "litellm_provider": "bedrock_converse",
-    "max_input_tokens": 1050000,
+    "max_input_tokens": 922000,
     "max_output_tokens": 128000,
     "mode": "chat",
     "output_cost_per_token": 3e-05,
@@ -108625,7 +108802,7 @@
     "input_cost_per_token": 2e-07,
     "input_cost_per_token_above_272k_tokens": 4e-07,
     "litellm_provider": "bedrock_converse",
-    "max_input_tokens": 1050000,
+    "max_input_tokens": 922000,
     "max_output_tokens": 128000,
     "mode": "chat",
     "output_cost_per_token": 1.2e-06,
@@ -108666,7 +108843,7 @@
     "input_cost_per_token": 4e-06,
     "input_cost_per_token_above_272k_tokens": 8e-06,
     "litellm_provider": "bedrock_converse",
-    "max_input_tokens": 1050000,
+    "max_input_tokens": 922000,
     "max_output_tokens": 128000,
     "mode": "chat",
     "output_cost_per_token": 2e-05,
@@ -108707,7 +108884,7 @@
     "input_cost_per_token": 2e-06,
     "input_cost_per_token_above_272k_tokens": 4e-06,
     "litellm_provider": "bedrock_converse",
-    "max_input_tokens": 1050000,
+    "max_input_tokens": 922000,
     "max_output_tokens": 128000,
     "mode": "chat",
     "output_cost_per_token": 1.2e-05,
@@ -108754,7 +108931,7 @@
     "input_cost_per_token_above_272k_tokens_ultrafast": 0.00012,
     "input_cost_per_token_ultrafast": 6e-05,
     "litellm_provider": "bedrock_converse",
-    "max_input_tokens": 1050000,
+    "max_input_tokens": 922000,
     "max_output_tokens": 128000,
     "mode": "chat",
     "output_cost_per_token": 5e-05,
@@ -108799,7 +108976,7 @@
     "input_cost_per_token": 1e-07,
     "input_cost_per_token_above_272k_tokens": 2e-07,
     "litellm_provider": "bedrock_converse",
-    "max_input_tokens": 1050000,
+    "max_input_tokens": 922000,
     "max_output_tokens": 128000,
     "mode": "chat",
     "output_cost_per_token": 5e-07,
@@ -108842,7 +109019,7 @@
     "input_cost_per_token": 2e-06,
     "input_cost_per_token_above_272k_tokens": 4e-06,
     "litellm_provider": "bedrock_converse",
-    "max_input_tokens": 1050000,
+    "max_input_tokens": 922000,
     "max_output_tokens": 128000,
     "mode": "chat",
     "output_cost_per_token": 1e-05,
@@ -124985,7 +125162,7 @@
       "cache_read": 0.027,
       "cache_write": 0,
       "input": 0.13,
-      "output": 0.4125
+      "output": 0.4312
     },
     "cache_creation_input_token_cost": 0.0,
     "cache_read_input_token_cost": 2.7e-08,
@@ -124993,7 +125170,7 @@
     "litellm_provider": "inceptron",
     "max_output_tokens": 1048576,
     "max_tokens": 1048576,
-    "output_cost_per_token": 4.1249999999999997e-07
+    "output_cost_per_token": 4.3120000000000005e-07
   },
   "inceptron/moonshotai/Kimi-K2.6": {
     "_price_provenance": {
@@ -125006,12 +125183,12 @@
     "_source_cost": {
       "cache_read": 0.117,
       "cache_write": 0,
-      "input": 0.546,
+      "input": 0.585,
       "output": 3.5
     },
     "cache_creation_input_token_cost": 0.0,
     "cache_read_input_token_cost": 1.17e-07,
-    "input_cost_per_token": 5.46e-07,
+    "input_cost_per_token": 5.85e-07,
     "litellm_provider": "inceptron",
     "max_output_tokens": 262144,
     "max_tokens": 262144,
@@ -131637,16 +131814,16 @@
     },
     "_price_status": "computable",
     "_source_cost": {
-      "cache_read": 0.05,
-      "input": 0.05,
-      "output": 0.45
+      "cache_read": 0.028,
+      "input": 0.14,
+      "output": 0.28
     },
-    "cache_read_input_token_cost": 5.0000000000000004e-08,
-    "input_cost_per_token": 5.0000000000000004e-08,
+    "cache_read_input_token_cost": 2.8e-08,
+    "input_cost_per_token": 1.4e-07,
     "litellm_provider": "kilo",
-    "max_output_tokens": 943718,
+    "max_output_tokens": 131072,
     "max_tokens": 1048576,
-    "output_cost_per_token": 4.5000000000000003e-07
+    "output_cost_per_token": 2.8e-07
   },
   "kilo/deepseek/deepseek-v4-flash-0731": {
     "_price_provenance": {
@@ -132632,8 +132809,8 @@
     "cache_read_input_token_cost": 6e-08,
     "input_cost_per_token": 3e-07,
     "litellm_provider": "kilo",
-    "max_output_tokens": 235929,
-    "max_tokens": 262144,
+    "max_output_tokens": 262144,
+    "max_tokens": 1000000,
     "output_cost_per_token": 9.000000000000001e-07
   },
   "kilo/inference-net/schematron-v2-small": {
@@ -132922,7 +133099,7 @@
     },
     "input_cost_per_token": 2e-08,
     "litellm_provider": "kilo",
-    "max_output_tokens": 117964,
+    "max_output_tokens": 16384,
     "max_tokens": 131072,
     "output_cost_per_token": 4e-08
   },
@@ -133241,10 +133418,10 @@
     },
     "_price_status": "computable",
     "_source_cost": {
-      "input": 0.4,
+      "input": 0.55,
       "output": 2.2
     },
-    "input_cost_per_token": 4.0000000000000003e-07,
+    "input_cost_per_token": 5.5e-07,
     "litellm_provider": "kilo",
     "max_output_tokens": 40000,
     "max_tokens": 1000000,
@@ -133259,14 +133436,14 @@
     },
     "_price_status": "computable",
     "_source_cost": {
-      "input": 0.3,
-      "output": 1.2
+      "input": 0.255,
+      "output": 1.02
     },
-    "input_cost_per_token": 3e-07,
+    "input_cost_per_token": 2.55e-07,
     "litellm_provider": "kilo",
     "max_output_tokens": 131072,
     "max_tokens": 204800,
-    "output_cost_per_token": 1.2e-06
+    "output_cost_per_token": 1.02e-06
   },
   "kilo/minimax/minimax-m2-her": {
     "_price_provenance": {
@@ -133318,15 +133495,15 @@
     "_price_status": "computable",
     "_source_cost": {
       "cache_read": 0.03,
-      "input": 0.27,
-      "output": 0.95
+      "input": 0.3,
+      "output": 1.2
     },
     "cache_read_input_token_cost": 3e-08,
-    "input_cost_per_token": 2.7e-07,
+    "input_cost_per_token": 3e-07,
     "litellm_provider": "kilo",
     "max_output_tokens": 131072,
     "max_tokens": 204800,
-    "output_cost_per_token": 9.499999999999999e-07
+    "output_cost_per_token": 1.2e-06
   },
   "kilo/minimax/minimax-m2.7": {
     "_price_provenance": {
@@ -133357,16 +133534,16 @@
     },
     "_price_status": "computable",
     "_source_cost": {
-      "cache_read": 0.0448,
-      "input": 0.224,
-      "output": 0.88
+      "cache_read": 0.06,
+      "input": 0.3,
+      "output": 1.2
     },
-    "cache_read_input_token_cost": 4.48e-08,
-    "input_cost_per_token": 2.24e-07,
+    "cache_read_input_token_cost": 6e-08,
+    "input_cost_per_token": 3e-07,
     "litellm_provider": "kilo",
     "max_output_tokens": 512000,
     "max_tokens": 524288,
-    "output_cost_per_token": 8.8e-07
+    "output_cost_per_token": 1.2e-06
   },
   "kilo/minimax/minimax-m3.1-flash": {
     "_price_provenance": {
@@ -134095,9 +134272,11 @@
     },
     "_price_status": "computable",
     "_source_cost": {
+      "cache_read": 0.2,
       "input": 1,
       "output": 3
     },
+    "cache_read_input_token_cost": 2.0000000000000002e-07,
     "input_cost_per_token": 1e-06,
     "litellm_provider": "kilo",
     "max_output_tokens": 117964,
@@ -134157,24 +134336,6 @@
     "max_output_tokens": 235929,
     "max_tokens": 262144,
     "output_cost_per_token": 4.5000000000000003e-07
-  },
-  "kilo/nvidia/nemotron-3-super-120b-a12b:free": {
-    "_price_provenance": {
-      "provider_id": "kilo",
-      "source": "models.dev",
-      "source_key": "nvidia/nemotron-3-super-120b-a12b:free",
-      "source_unit": "USD per million tokens"
-    },
-    "_price_status": "computable",
-    "_source_cost": {
-      "input": 0,
-      "output": 0
-    },
-    "input_cost_per_token": 0.0,
-    "litellm_provider": "kilo",
-    "max_output_tokens": 235929,
-    "max_tokens": 262144,
-    "output_cost_per_token": 0.0
   },
   "kilo/nvidia/nemotron-3-ultra-550b-a55b": {
     "_price_provenance": {
@@ -135957,6 +136118,26 @@
     "max_tokens": 262144,
     "output_cost_per_token": 5e-07
   },
+  "kilo/prism-ml/ternary-bonsai-2-9b": {
+    "_price_provenance": {
+      "provider_id": "kilo",
+      "source": "models.dev",
+      "source_key": "prism-ml/ternary-bonsai-2-9b",
+      "source_unit": "USD per million tokens"
+    },
+    "_price_status": "computable",
+    "_source_cost": {
+      "cache_read": 0.04,
+      "input": 0.08,
+      "output": 0.13
+    },
+    "cache_read_input_token_cost": 4e-08,
+    "input_cost_per_token": 8e-08,
+    "litellm_provider": "kilo",
+    "max_output_tokens": 65536,
+    "max_tokens": 262144,
+    "output_cost_per_token": 1.3e-07
+  },
   "kilo/qwen/qwen-2.5-72b-instruct": {
     "_price_provenance": {
       "provider_id": "kilo",
@@ -136134,9 +136315,11 @@
     },
     "_price_status": "computable",
     "_source_cost": {
+      "cache_read": 0.1,
       "input": 0.1,
       "output": 0.3
     },
+    "cache_read_input_token_cost": 1.0000000000000001e-07,
     "input_cost_per_token": 1.0000000000000001e-07,
     "litellm_provider": "kilo",
     "max_output_tokens": 235929,
@@ -136513,7 +136696,7 @@
     },
     "input_cost_per_token": 4.5000000000000003e-07,
     "litellm_provider": "kilo",
-    "max_output_tokens": 81920,
+    "max_output_tokens": 65536,
     "max_tokens": 262144,
     "output_cost_per_token": 2.7e-06
   },
@@ -136526,16 +136709,16 @@
     },
     "_price_status": "computable",
     "_source_cost": {
-      "cache_read": 0.05,
+      "cache_read": 0.025,
       "input": 0.1,
-      "output": 0.95
+      "output": 0.9
     },
-    "cache_read_input_token_cost": 5.0000000000000004e-08,
+    "cache_read_input_token_cost": 2.5000000000000002e-08,
     "input_cost_per_token": 1.0000000000000001e-07,
     "litellm_provider": "kilo",
     "max_output_tokens": 235929,
     "max_tokens": 262144,
-    "output_cost_per_token": 9.499999999999999e-07
+    "output_cost_per_token": 9.000000000000001e-07
   },
   "kilo/qwen/qwen3.6-flash": {
     "_price_provenance": {
@@ -136684,7 +136867,7 @@
     "cache_read_input_token_cost": 8.500000000000001e-08,
     "input_cost_per_token": 4.25e-07,
     "litellm_provider": "kilo",
-    "max_output_tokens": 235929,
+    "max_output_tokens": 65536,
     "max_tokens": 262144,
     "output_cost_per_token": 2.5499999999999997e-06
   },
@@ -136820,10 +137003,12 @@
     "_price_status": "computable",
     "_source_cost": {
       "cache_read": 0,
+      "cache_write": 0,
       "input": 0,
       "output": 0,
       "reasoning": 0
     },
+    "cache_creation_input_token_cost": 0.0,
     "cache_read_input_token_cost": 0.0,
     "input_cost_per_token": 0.0,
     "litellm_provider": "kilo",
@@ -137162,10 +137347,12 @@
     "_price_status": "computable",
     "_source_cost": {
       "cache_read": 0,
+      "cache_write": 0,
       "input": 0,
       "output": 0,
       "reasoning": 0
     },
+    "cache_creation_input_token_cost": 0.0,
     "cache_read_input_token_cost": 0.0,
     "input_cost_per_token": 0.0,
     "litellm_provider": "kilo",
@@ -138109,8 +138296,8 @@
     "cache_read_input_token_cost": 2.6e-07,
     "input_cost_per_token": 1.4e-06,
     "litellm_provider": "kilo",
-    "max_output_tokens": 128000,
-    "max_tokens": 200000,
+    "max_output_tokens": 131072,
+    "max_tokens": 202752,
     "output_cost_per_token": 4.4e-06
   },
   "kilo/z-ai/glm-5.2": {
@@ -138330,16 +138517,16 @@
     },
     "_price_status": "computable",
     "_source_cost": {
-      "cache_read": 0.015,
-      "input": 0.02,
-      "output": 1
+      "cache_read": 0.0114,
+      "input": 0.0115,
+      "output": 1.64
     },
-    "cache_read_input_token_cost": 1.5e-08,
-    "input_cost_per_token": 2e-08,
+    "cache_read_input_token_cost": 1.1400000000000001e-08,
+    "input_cost_per_token": 1.15e-08,
     "litellm_provider": "kilo",
     "max_output_tokens": 943718,
     "max_tokens": 1048576,
-    "output_cost_per_token": 1e-06
+    "output_cost_per_token": 1.64e-06
   },
   "kilo/~deepseek/deepseek-pro-latest": {
     "_price_provenance": {
@@ -138351,11 +138538,11 @@
     "_price_status": "computable",
     "_source_cost": {
       "cache_read": 0.25,
-      "input": 0.2484,
+      "input": 0.2542,
       "output": 8
     },
     "cache_read_input_token_cost": 2.5e-07,
-    "input_cost_per_token": 2.4840000000000003e-07,
+    "input_cost_per_token": 2.542e-07,
     "litellm_provider": "kilo",
     "max_output_tokens": 393216,
     "max_tokens": 1048576,
@@ -138606,16 +138793,16 @@
     },
     "_price_status": "computable",
     "_source_cost": {
-      "cache_read": 0.03,
-      "input": 0.0513,
-      "output": 0.0701
+      "cache_read": 0.0285,
+      "input": 0.0285,
+      "output": 0.0923
     },
-    "cache_read_input_token_cost": 3e-08,
-    "input_cost_per_token": 5.1299999999999996e-08,
+    "cache_read_input_token_cost": 2.85e-08,
+    "input_cost_per_token": 2.85e-08,
     "litellm_provider": "kilo",
     "max_output_tokens": 131072,
     "max_tokens": 1048576,
-    "output_cost_per_token": 7.01e-08
+    "output_cost_per_token": 9.23e-08
   },
   "kilo/~z-ai/glm-latest": {
     "_price_provenance": {
@@ -140609,6 +140796,26 @@
     "max_tokens": 983616,
     "output_cost_per_token": 6e-06
   },
+  "llmgateway-providers/alibaba/qwen3.8-omni-flash": {
+    "_price_provenance": {
+      "provider_id": "llmgateway-providers",
+      "source": "models.dev",
+      "source_key": "alibaba/qwen3.8-omni-flash",
+      "source_unit": "USD per million tokens"
+    },
+    "_price_status": "computable",
+    "_source_cost": {
+      "cache_read": 0.016,
+      "input": 0.15,
+      "output": 0.47
+    },
+    "cache_read_input_token_cost": 1.6e-08,
+    "input_cost_per_token": 1.5e-07,
+    "litellm_provider": "llmgateway-providers",
+    "max_output_tokens": 131072,
+    "max_tokens": 983616,
+    "output_cost_per_token": 4.6999999999999995e-07
+  },
   "llmgateway-providers/alibaba/qwen35-397b-a17b": {
     "_price_provenance": {
       "provider_id": "llmgateway-providers",
@@ -141572,24 +141779,6 @@
     "max_tokens": 1050000,
     "output_cost_per_token": 5e-05
   },
-  "llmgateway-providers/azure-ai-foundry/grok-4-1-fast-non-reasoning": {
-    "_price_provenance": {
-      "provider_id": "llmgateway-providers",
-      "source": "models.dev",
-      "source_key": "azure-ai-foundry/grok-4-1-fast-non-reasoning",
-      "source_unit": "USD per million tokens"
-    },
-    "_price_status": "computable",
-    "_source_cost": {
-      "input": 0.2,
-      "output": 0.5
-    },
-    "input_cost_per_token": 2.0000000000000002e-07,
-    "litellm_provider": "llmgateway-providers",
-    "max_output_tokens": 30000,
-    "max_tokens": 2000000,
-    "output_cost_per_token": 5e-07
-  },
   "llmgateway-providers/azure-ai-foundry/grok-4-1-fast-reasoning": {
     "_price_provenance": {
       "provider_id": "llmgateway-providers",
@@ -142447,6 +142636,26 @@
     "max_tokens": 1048576,
     "output_cost_per_token": 1.2e-06
   },
+  "llmgateway-providers/baidu/deepseek-v4.1-flash-1017": {
+    "_price_provenance": {
+      "provider_id": "llmgateway-providers",
+      "source": "models.dev",
+      "source_key": "baidu/deepseek-v4.1-flash-1017",
+      "source_unit": "USD per million tokens"
+    },
+    "_price_status": "computable",
+    "_source_cost": {
+      "cache_read": 0.006,
+      "input": 0.28,
+      "output": 1.13
+    },
+    "cache_read_input_token_cost": 6e-09,
+    "input_cost_per_token": 2.8e-07,
+    "litellm_provider": "llmgateway-providers",
+    "max_output_tokens": 393216,
+    "max_tokens": 1048576,
+    "output_cost_per_token": 1.13e-06
+  },
   "llmgateway-providers/baidu/glm-5.1": {
     "_price_provenance": {
       "provider_id": "llmgateway-providers",
@@ -142506,6 +142715,26 @@
     "max_output_tokens": 131072,
     "max_tokens": 1048576,
     "output_cost_per_token": 4.4e-06
+  },
+  "llmgateway-providers/baidu/glm-5.3-flash": {
+    "_price_provenance": {
+      "provider_id": "llmgateway-providers",
+      "source": "models.dev",
+      "source_key": "baidu/glm-5.3-flash",
+      "source_unit": "USD per million tokens"
+    },
+    "_price_status": "computable",
+    "_source_cost": {
+      "cache_read": 0.03,
+      "input": 0.15,
+      "output": 0.5
+    },
+    "cache_read_input_token_cost": 3e-08,
+    "input_cost_per_token": 1.5e-07,
+    "litellm_provider": "llmgateway-providers",
+    "max_output_tokens": 131072,
+    "max_tokens": 1048576,
+    "output_cost_per_token": 5e-07
   },
   "llmgateway-providers/baidu/kimi-k2.6": {
     "_price_provenance": {
@@ -142977,24 +143206,6 @@
     "litellm_provider": "llmgateway-providers",
     "max_output_tokens": 4096,
     "max_tokens": 128000,
-    "output_cost_per_token": 1.2e-06
-  },
-  "llmgateway-providers/cerebras/qwen3-235b-a22b-instruct-2507": {
-    "_price_provenance": {
-      "provider_id": "llmgateway-providers",
-      "source": "models.dev",
-      "source_key": "cerebras/qwen3-235b-a22b-instruct-2507",
-      "source_unit": "USD per million tokens"
-    },
-    "_price_status": "computable",
-    "_source_cost": {
-      "input": 0.6,
-      "output": 1.2
-    },
-    "input_cost_per_token": 6e-07,
-    "litellm_provider": "llmgateway-providers",
-    "max_output_tokens": 8192,
-    "max_tokens": 262000,
     "output_cost_per_token": 1.2e-06
   },
   "llmgateway-providers/consensusprotocol/Qwen3.8-27B": {
@@ -143528,186 +143739,6 @@
     "max_output_tokens": 393216,
     "max_tokens": 1050000,
     "output_cost_per_token": 6e-07
-  },
-  "llmgateway-providers/embercloud/glm-4.5": {
-    "_price_provenance": {
-      "provider_id": "llmgateway-providers",
-      "source": "models.dev",
-      "source_key": "embercloud/glm-4.5",
-      "source_unit": "USD per million tokens"
-    },
-    "_price_status": "computable",
-    "_source_cost": {
-      "cache_read": 0.11,
-      "input": 0.6,
-      "output": 2.2
-    },
-    "cache_read_input_token_cost": 1.1e-07,
-    "input_cost_per_token": 6e-07,
-    "litellm_provider": "llmgateway-providers",
-    "max_output_tokens": 96000,
-    "max_tokens": 131000,
-    "output_cost_per_token": 2.2e-06
-  },
-  "llmgateway-providers/embercloud/glm-4.5-air": {
-    "_price_provenance": {
-      "provider_id": "llmgateway-providers",
-      "source": "models.dev",
-      "source_key": "embercloud/glm-4.5-air",
-      "source_unit": "USD per million tokens"
-    },
-    "_price_status": "computable",
-    "_source_cost": {
-      "cache_read": 0.025,
-      "input": 0.13,
-      "output": 0.85
-    },
-    "cache_read_input_token_cost": 2.5000000000000002e-08,
-    "input_cost_per_token": 1.3e-07,
-    "litellm_provider": "llmgateway-providers",
-    "max_output_tokens": 96000,
-    "max_tokens": 131000,
-    "output_cost_per_token": 8.5e-07
-  },
-  "llmgateway-providers/embercloud/glm-4.7": {
-    "_price_provenance": {
-      "provider_id": "llmgateway-providers",
-      "source": "models.dev",
-      "source_key": "embercloud/glm-4.7",
-      "source_unit": "USD per million tokens"
-    },
-    "_price_status": "computable",
-    "_source_cost": {
-      "cache_read": 0.19,
-      "input": 0.38,
-      "output": 1.98
-    },
-    "cache_read_input_token_cost": 1.9e-07,
-    "input_cost_per_token": 3.8e-07,
-    "litellm_provider": "llmgateway-providers",
-    "max_output_tokens": 131000,
-    "max_tokens": 200000,
-    "output_cost_per_token": 1.98e-06
-  },
-  "llmgateway-providers/embercloud/glm-4.7-flash": {
-    "_price_provenance": {
-      "provider_id": "llmgateway-providers",
-      "source": "models.dev",
-      "source_key": "embercloud/glm-4.7-flash",
-      "source_unit": "USD per million tokens"
-    },
-    "_price_status": "computable",
-    "_source_cost": {
-      "cache_read": 0.01,
-      "input": 0.06,
-      "output": 0.4
-    },
-    "cache_read_input_token_cost": 1e-08,
-    "input_cost_per_token": 6e-08,
-    "litellm_provider": "llmgateway-providers",
-    "max_output_tokens": 131000,
-    "max_tokens": 200000,
-    "output_cost_per_token": 4.0000000000000003e-07
-  },
-  "llmgateway-providers/embercloud/glm-5": {
-    "_price_provenance": {
-      "provider_id": "llmgateway-providers",
-      "source": "models.dev",
-      "source_key": "embercloud/glm-5",
-      "source_unit": "USD per million tokens"
-    },
-    "_price_status": "computable",
-    "_source_cost": {
-      "cache_read": 0.144,
-      "input": 0.72,
-      "output": 2.3
-    },
-    "cache_read_input_token_cost": 1.44e-07,
-    "input_cost_per_token": 7.2e-07,
-    "litellm_provider": "llmgateway-providers",
-    "max_output_tokens": 131000,
-    "max_tokens": 203000,
-    "output_cost_per_token": 2.3e-06
-  },
-  "llmgateway-providers/embercloud/glm-5.1": {
-    "_price_provenance": {
-      "provider_id": "llmgateway-providers",
-      "source": "models.dev",
-      "source_key": "embercloud/glm-5.1",
-      "source_unit": "USD per million tokens"
-    },
-    "_price_status": "computable",
-    "_source_cost": {
-      "cache_read": 0.173,
-      "input": 0.931,
-      "output": 2.93
-    },
-    "cache_read_input_token_cost": 1.7299999999999997e-07,
-    "input_cost_per_token": 9.310000000000001e-07,
-    "litellm_provider": "llmgateway-providers",
-    "max_output_tokens": 131000,
-    "max_tokens": 203000,
-    "output_cost_per_token": 2.9300000000000003e-06
-  },
-  "llmgateway-providers/embercloud/glm-5.2": {
-    "_price_provenance": {
-      "provider_id": "llmgateway-providers",
-      "source": "models.dev",
-      "source_key": "embercloud/glm-5.2",
-      "source_unit": "USD per million tokens"
-    },
-    "_price_status": "computable",
-    "_source_cost": {
-      "cache_read": 0.234,
-      "input": 1.26,
-      "output": 3.96
-    },
-    "cache_read_input_token_cost": 2.34e-07,
-    "input_cost_per_token": 1.26e-06,
-    "litellm_provider": "llmgateway-providers",
-    "max_output_tokens": 131000,
-    "max_tokens": 203000,
-    "output_cost_per_token": 3.96e-06
-  },
-  "llmgateway-providers/embercloud/kimi-k2.5": {
-    "_price_provenance": {
-      "provider_id": "llmgateway-providers",
-      "source": "models.dev",
-      "source_key": "embercloud/kimi-k2.5",
-      "source_unit": "USD per million tokens"
-    },
-    "_price_status": "computable",
-    "_source_cost": {
-      "cache_read": 0.225,
-      "input": 0.405,
-      "output": 1.98
-    },
-    "cache_read_input_token_cost": 2.2500000000000002e-07,
-    "input_cost_per_token": 4.0500000000000004e-07,
-    "litellm_provider": "llmgateway-providers",
-    "max_output_tokens": 262144,
-    "max_tokens": 262144,
-    "output_cost_per_token": 1.98e-06
-  },
-  "llmgateway-providers/embercloud/qwen3-coder-next": {
-    "_price_provenance": {
-      "provider_id": "llmgateway-providers",
-      "source": "models.dev",
-      "source_key": "embercloud/qwen3-coder-next",
-      "source_unit": "USD per million tokens"
-    },
-    "_price_status": "computable",
-    "_source_cost": {
-      "cache_read": 0.06,
-      "input": 0.108,
-      "output": 0.675
-    },
-    "cache_read_input_token_cost": 6e-08,
-    "input_cost_per_token": 1.08e-07,
-    "litellm_provider": "llmgateway-providers",
-    "max_output_tokens": 262144,
-    "max_tokens": 262144,
-    "output_cost_per_token": 6.75e-07
   },
   "llmgateway-providers/entrim/deepseek-v4.1-flash": {
     "_price_provenance": {
@@ -145692,24 +145723,6 @@
     "max_tokens": 8192,
     "output_cost_per_token": 7.4e-07
   },
-  "llmgateway-providers/novita/llama-3.2-3b-instruct": {
-    "_price_provenance": {
-      "provider_id": "llmgateway-providers",
-      "source": "models.dev",
-      "source_key": "novita/llama-3.2-3b-instruct",
-      "source_unit": "USD per million tokens"
-    },
-    "_price_status": "computable",
-    "_source_cost": {
-      "input": 0.03,
-      "output": 0.05
-    },
-    "input_cost_per_token": 3e-08,
-    "litellm_provider": "llmgateway-providers",
-    "max_output_tokens": 32000,
-    "max_tokens": 32768,
-    "output_cost_per_token": 5.0000000000000004e-08
-  },
   "llmgateway-providers/novita/llama-3.3-70b-instruct": {
     "_price_provenance": {
       "provider_id": "llmgateway-providers",
@@ -145862,24 +145875,6 @@
     "max_tokens": 40960,
     "output_cost_per_token": 8.000000000000001e-07
   },
-  "llmgateway-providers/novita/qwen3-235b-a22b-instruct-2507": {
-    "_price_provenance": {
-      "provider_id": "llmgateway-providers",
-      "source": "models.dev",
-      "source_key": "novita/qwen3-235b-a22b-instruct-2507",
-      "source_unit": "USD per million tokens"
-    },
-    "_price_status": "computable",
-    "_source_cost": {
-      "input": 0.09,
-      "output": 0.58
-    },
-    "input_cost_per_token": 9e-08,
-    "litellm_provider": "llmgateway-providers",
-    "max_output_tokens": 16384,
-    "max_tokens": 131072,
-    "output_cost_per_token": 5.8e-07
-  },
   "llmgateway-providers/novita/qwen3-235b-a22b-thinking-2507": {
     "_price_provenance": {
       "provider_id": "llmgateway-providers",
@@ -145969,42 +145964,6 @@
     "max_output_tokens": 32768,
     "max_tokens": 131072,
     "output_cost_per_token": 1.5e-06
-  },
-  "llmgateway-providers/novita/qwen3-vl-235b-a22b-instruct": {
-    "_price_provenance": {
-      "provider_id": "llmgateway-providers",
-      "source": "models.dev",
-      "source_key": "novita/qwen3-vl-235b-a22b-instruct",
-      "source_unit": "USD per million tokens"
-    },
-    "_price_status": "computable",
-    "_source_cost": {
-      "input": 0.3,
-      "output": 1.5
-    },
-    "input_cost_per_token": 3e-07,
-    "litellm_provider": "llmgateway-providers",
-    "max_output_tokens": 32768,
-    "max_tokens": 131072,
-    "output_cost_per_token": 1.5e-06
-  },
-  "llmgateway-providers/novita/qwen3-vl-235b-a22b-thinking": {
-    "_price_provenance": {
-      "provider_id": "llmgateway-providers",
-      "source": "models.dev",
-      "source_key": "novita/qwen3-vl-235b-a22b-thinking",
-      "source_unit": "USD per million tokens"
-    },
-    "_price_status": "computable",
-    "_source_cost": {
-      "input": 0.98,
-      "output": 3.95
-    },
-    "input_cost_per_token": 9.8e-07,
-    "litellm_provider": "llmgateway-providers",
-    "max_output_tokens": 32768,
-    "max_tokens": 131072,
-    "output_cost_per_token": 3.95e-06
   },
   "llmgateway-providers/novita/qwen3-vl-30b-a3b-instruct": {
     "_price_provenance": {
@@ -146950,26 +146909,6 @@
     "max_tokens": 1000000,
     "output_cost_per_token": 2.8e-07
   },
-  "llmgateway-providers/reka-ai/deepseek-v4-pro": {
-    "_price_provenance": {
-      "provider_id": "llmgateway-providers",
-      "source": "models.dev",
-      "source_key": "reka-ai/deepseek-v4-pro",
-      "source_unit": "USD per million tokens"
-    },
-    "_price_status": "computable",
-    "_source_cost": {
-      "cache_read": 0.07,
-      "input": 0.9,
-      "output": 1.9
-    },
-    "cache_read_input_token_cost": 7e-08,
-    "input_cost_per_token": 9.000000000000001e-07,
-    "litellm_provider": "llmgateway-providers",
-    "max_output_tokens": 393216,
-    "max_tokens": 1048576,
-    "output_cost_per_token": 1.8999999999999998e-06
-  },
   "llmgateway-providers/reka-ai/deepseek-v4.1-flash": {
     "_price_provenance": {
       "provider_id": "llmgateway-providers",
@@ -146979,16 +146918,16 @@
     },
     "_price_status": "computable",
     "_source_cost": {
-      "cache_read": 0.0025,
-      "input": 0.1,
-      "output": 0.3
+      "cache_read": 0.009,
+      "input": 0.15,
+      "output": 0.6
     },
-    "cache_read_input_token_cost": 2.5e-09,
-    "input_cost_per_token": 1.0000000000000001e-07,
+    "cache_read_input_token_cost": 9e-09,
+    "input_cost_per_token": 1.5e-07,
     "litellm_provider": "llmgateway-providers",
     "max_output_tokens": 393216,
     "max_tokens": 1048576,
-    "output_cost_per_token": 3e-07
+    "output_cost_per_token": 6e-07
   },
   "llmgateway-providers/reka-ai/deepseek-v4.1-flash-1017": {
     "_price_provenance": {
@@ -146999,16 +146938,16 @@
     },
     "_price_status": "computable",
     "_source_cost": {
-      "cache_read": 0.003,
-      "input": 0.15,
-      "output": 0.6
+      "cache_read": 0.006,
+      "input": 0.16,
+      "output": 0.64
     },
-    "cache_read_input_token_cost": 3e-09,
-    "input_cost_per_token": 1.5e-07,
+    "cache_read_input_token_cost": 6e-09,
+    "input_cost_per_token": 1.6e-07,
     "litellm_provider": "llmgateway-providers",
     "max_output_tokens": 393216,
     "max_tokens": 1048576,
-    "output_cost_per_token": 6e-07
+    "output_cost_per_token": 6.4e-07
   },
   "llmgateway-providers/reka-ai/glm-5.3": {
     "_price_provenance": {
@@ -147039,11 +146978,11 @@
     },
     "_price_status": "computable",
     "_source_cost": {
-      "cache_read": 0.02,
+      "cache_read": 0.027,
       "input": 0.15,
       "output": 0.5
     },
-    "cache_read_input_token_cost": 2e-08,
+    "cache_read_input_token_cost": 2.7e-08,
     "input_cost_per_token": 1.5e-07,
     "litellm_provider": "llmgateway-providers",
     "max_output_tokens": 262144,
@@ -149523,16 +149462,16 @@
     },
     "_price_status": "computable",
     "_source_cost": {
-      "cache_read": 0.0025,
-      "input": 0.1,
-      "output": 0.3
+      "cache_read": 0.0027,
+      "input": 0.135,
+      "output": 0.54
     },
-    "cache_read_input_token_cost": 2.5e-09,
-    "input_cost_per_token": 1.0000000000000001e-07,
+    "cache_read_input_token_cost": 2.7e-09,
+    "input_cost_per_token": 1.35e-07,
     "litellm_provider": "llmgateway",
     "max_output_tokens": 384000,
     "max_tokens": 1050000,
-    "output_cost_per_token": 3e-07
+    "output_cost_per_token": 5.4e-07
   },
   "llmgateway/deepseek-v4.1-flash-1017": {
     "_price_provenance": {
@@ -150123,28 +150062,6 @@
     "max_output_tokens": 131072,
     "max_tokens": 204800,
     "output_cost_per_token": 2e-06
-  },
-  "llmgateway/glm-4.7-flash": {
-    "_price_provenance": {
-      "provider_id": "llmgateway",
-      "source": "models.dev",
-      "source_key": "glm-4.7-flash",
-      "source_unit": "USD per million tokens"
-    },
-    "_price_status": "computable",
-    "_source_cost": {
-      "cache_read": 0.01,
-      "cache_write": 0,
-      "input": 0.06,
-      "output": 0.4
-    },
-    "cache_creation_input_token_cost": 0.0,
-    "cache_read_input_token_cost": 1e-08,
-    "input_cost_per_token": 6e-08,
-    "litellm_provider": "llmgateway",
-    "max_output_tokens": 131072,
-    "max_tokens": 200000,
-    "output_cost_per_token": 4.0000000000000003e-07
   },
   "llmgateway/glm-4.7-flashx": {
     "_price_provenance": {
@@ -151149,26 +151066,6 @@
     "max_tokens": 256000,
     "output_cost_per_token": 1.5e-05
   },
-  "llmgateway/grok-4-1-fast-non-reasoning": {
-    "_price_provenance": {
-      "provider_id": "llmgateway",
-      "source": "models.dev",
-      "source_key": "grok-4-1-fast-non-reasoning",
-      "source_unit": "USD per million tokens"
-    },
-    "_price_status": "computable",
-    "_source_cost": {
-      "cache_read": 0.05,
-      "input": 0.2,
-      "output": 0.5
-    },
-    "cache_read_input_token_cost": 5.0000000000000004e-08,
-    "input_cost_per_token": 2.0000000000000002e-07,
-    "litellm_provider": "llmgateway",
-    "max_output_tokens": 2000000,
-    "max_tokens": 2000000,
-    "output_cost_per_token": 5e-07
-  },
   "llmgateway/grok-4-1-fast-reasoning": {
     "_price_provenance": {
       "provider_id": "llmgateway",
@@ -151801,24 +151698,6 @@
     "max_output_tokens": 8192,
     "max_tokens": 128000,
     "output_cost_per_token": 3.3e-07
-  },
-  "llmgateway/llama-3.2-3b-instruct": {
-    "_price_provenance": {
-      "provider_id": "llmgateway",
-      "source": "models.dev",
-      "source_key": "llama-3.2-3b-instruct",
-      "source_unit": "USD per million tokens"
-    },
-    "_price_status": "computable",
-    "_source_cost": {
-      "input": 0.03,
-      "output": 0.05
-    },
-    "input_cost_per_token": 3e-08,
-    "litellm_provider": "llmgateway",
-    "max_output_tokens": 32000,
-    "max_tokens": 32768,
-    "output_cost_per_token": 5.0000000000000004e-08
   },
   "llmgateway/llama-3.3-70b-instruct": {
     "_price_provenance": {
@@ -152582,24 +152461,6 @@
     "max_tokens": 40960,
     "output_cost_per_token": 8.000000000000001e-07
   },
-  "llmgateway/qwen3-235b-a22b-instruct-2507": {
-    "_price_provenance": {
-      "provider_id": "llmgateway",
-      "source": "models.dev",
-      "source_key": "qwen3-235b-a22b-instruct-2507",
-      "source_unit": "USD per million tokens"
-    },
-    "_price_status": "computable",
-    "_source_cost": {
-      "input": 0.09,
-      "output": 0.58
-    },
-    "input_cost_per_token": 9e-08,
-    "litellm_provider": "llmgateway",
-    "max_output_tokens": 8192,
-    "max_tokens": 262144,
-    "output_cost_per_token": 5.8e-07
-  },
   "llmgateway/qwen3-235b-a22b-thinking-2507": {
     "_price_provenance": {
       "provider_id": "llmgateway",
@@ -152714,26 +152575,6 @@
     "max_tokens": 997952,
     "output_cost_per_token": 1.5e-06
   },
-  "llmgateway/qwen3-coder-next": {
-    "_price_provenance": {
-      "provider_id": "llmgateway",
-      "source": "models.dev",
-      "source_key": "qwen3-coder-next",
-      "source_unit": "USD per million tokens"
-    },
-    "_price_status": "computable",
-    "_source_cost": {
-      "cache_read": 0.06,
-      "input": 0.108,
-      "output": 0.675
-    },
-    "cache_read_input_token_cost": 6e-08,
-    "input_cost_per_token": 1.08e-07,
-    "litellm_provider": "llmgateway",
-    "max_output_tokens": 65536,
-    "max_tokens": 262144,
-    "output_cost_per_token": 6.75e-07
-  },
   "llmgateway/qwen3-max": {
     "_price_provenance": {
       "provider_id": "llmgateway",
@@ -152793,24 +152634,6 @@
     "max_output_tokens": 8192,
     "max_tokens": 262144,
     "output_cost_per_token": 8.8e-07
-  },
-  "llmgateway/qwen3-vl-235b-a22b-thinking": {
-    "_price_provenance": {
-      "provider_id": "llmgateway",
-      "source": "models.dev",
-      "source_key": "qwen3-vl-235b-a22b-thinking",
-      "source_unit": "USD per million tokens"
-    },
-    "_price_status": "computable",
-    "_source_cost": {
-      "input": 0.98,
-      "output": 3.95
-    },
-    "input_cost_per_token": 9.8e-07,
-    "litellm_provider": "llmgateway",
-    "max_output_tokens": 8192,
-    "max_tokens": 131072,
-    "output_cost_per_token": 3.95e-06
   },
   "llmgateway/qwen3-vl-30b-a3b-instruct": {
     "_price_provenance": {
@@ -153153,6 +152976,26 @@
     "max_output_tokens": 1000000,
     "max_tokens": 1000000,
     "output_cost_per_token": 4.631e-06
+  },
+  "llmgateway/qwen3.8-omni-flash": {
+    "_price_provenance": {
+      "provider_id": "llmgateway",
+      "source": "models.dev",
+      "source_key": "qwen3.8-omni-flash",
+      "source_unit": "USD per million tokens"
+    },
+    "_price_status": "computable",
+    "_source_cost": {
+      "cache_read": 0.016,
+      "input": 0.15,
+      "output": 0.47
+    },
+    "cache_read_input_token_cost": 1.6e-08,
+    "input_cost_per_token": 1.5e-07,
+    "litellm_provider": "llmgateway",
+    "max_output_tokens": 131072,
+    "max_tokens": 983616,
+    "output_cost_per_token": 4.6999999999999995e-07
   },
   "llmgateway/qwen35-397b-a17b": {
     "_price_provenance": {
@@ -165098,6 +164941,86 @@
     "max_tokens": 202752,
     "output_cost_per_token": 0.0
   },
+  "modular/MiniMaxAI/MiniMax-M3.1-Flash": {
+    "_price_provenance": {
+      "provider_id": "modular",
+      "source": "models.dev",
+      "source_key": "MiniMaxAI/MiniMax-M3.1-Flash",
+      "source_unit": "USD per million tokens"
+    },
+    "_price_status": "computable",
+    "_source_cost": {
+      "cache_read": 0.015,
+      "input": 0.15,
+      "output": 0.6
+    },
+    "cache_read_input_token_cost": 1.5e-08,
+    "input_cost_per_token": 1.5e-07,
+    "litellm_provider": "modular",
+    "max_output_tokens": 512000,
+    "max_tokens": 1048576,
+    "output_cost_per_token": 6e-07
+  },
+  "modular/deepseek/deepseek-v4.1-flash": {
+    "_price_provenance": {
+      "provider_id": "modular",
+      "source": "models.dev",
+      "source_key": "deepseek/deepseek-v4.1-flash",
+      "source_unit": "USD per million tokens"
+    },
+    "_price_status": "computable",
+    "_source_cost": {
+      "cache_read": 0.02,
+      "input": 0.17,
+      "output": 1.2
+    },
+    "cache_read_input_token_cost": 2e-08,
+    "input_cost_per_token": 1.7000000000000001e-07,
+    "litellm_provider": "modular",
+    "max_output_tokens": 384000,
+    "max_tokens": 1048576,
+    "output_cost_per_token": 1.2e-06
+  },
+  "modular/google/gemma-4-31b-it": {
+    "_price_provenance": {
+      "provider_id": "modular",
+      "source": "models.dev",
+      "source_key": "google/gemma-4-31b-it",
+      "source_unit": "USD per million tokens"
+    },
+    "_price_status": "computable",
+    "_source_cost": {
+      "cache_read": 0.08,
+      "input": 0.25,
+      "output": 0.65
+    },
+    "cache_read_input_token_cost": 8e-08,
+    "input_cost_per_token": 2.5e-07,
+    "litellm_provider": "modular",
+    "max_output_tokens": 32768,
+    "max_tokens": 262144,
+    "output_cost_per_token": 6.5e-07
+  },
+  "modular/minimax/minimax-m3": {
+    "_price_provenance": {
+      "provider_id": "modular",
+      "source": "models.dev",
+      "source_key": "minimax/minimax-m3",
+      "source_unit": "USD per million tokens"
+    },
+    "_price_status": "computable",
+    "_source_cost": {
+      "cache_read": 0.06,
+      "input": 0.3,
+      "output": 1.2
+    },
+    "cache_read_input_token_cost": 6e-08,
+    "input_cost_per_token": 3e-07,
+    "litellm_provider": "modular",
+    "max_output_tokens": 512000,
+    "max_tokens": 1048576,
+    "output_cost_per_token": 1.2e-06
+  },
   "moonshot.kimi-k2-thinking": {
     "_price_provenance": {
       "source": "litellm",
@@ -165670,63 +165593,86 @@
   },
   "morph/morph-dsv41flash": {
     "_price_provenance": {
-      "provider_id": "morph",
-      "source": "models.dev",
-      "source_key": "morph-dsv41flash",
-      "source_unit": "USD per million tokens"
+      "source": "litellm",
+      "source_key": "morph/morph-dsv41flash"
     },
     "_price_status": "computable",
-    "_source_cost": {
-      "cache_read": 0.008,
-      "input": 0.12,
-      "output": 0.8
-    },
     "cache_read_input_token_cost": 8e-09,
     "input_cost_per_token": 1.2e-07,
     "litellm_provider": "morph",
+    "max_input_tokens": 1048576,
     "max_output_tokens": 1048576,
-    "max_tokens": 1048576,
-    "output_cost_per_token": 8.000000000000001e-07
+    "mode": "chat",
+    "output_cost_per_token": 8e-07,
+    "source": "https://www.morphllm.com/pricing",
+    "supports_function_calling": true,
+    "supports_parallel_function_calling": true,
+    "supports_prompt_caching": true,
+    "supports_reasoning": true,
+    "supports_response_schema": true,
+    "supports_vision": true
   },
   "morph/morph-dsv41flash-1017": {
     "_price_provenance": {
-      "provider_id": "morph",
-      "source": "models.dev",
-      "source_key": "morph-dsv41flash-1017",
-      "source_unit": "USD per million tokens"
+      "source": "litellm",
+      "source_key": "morph/morph-dsv41flash-1017"
     },
     "_price_status": "computable",
-    "_source_cost": {
-      "cache_read": 0.008,
-      "input": 0.12,
-      "output": 0.8
-    },
     "cache_read_input_token_cost": 8e-09,
     "input_cost_per_token": 1.2e-07,
     "litellm_provider": "morph",
+    "max_input_tokens": 1048576,
     "max_output_tokens": 1048576,
-    "max_tokens": 1048576,
-    "output_cost_per_token": 8.000000000000001e-07
+    "mode": "chat",
+    "output_cost_per_token": 8e-07,
+    "source": "https://www.morphllm.com/pricing",
+    "supports_function_calling": true,
+    "supports_parallel_function_calling": true,
+    "supports_prompt_caching": true,
+    "supports_reasoning": true,
+    "supports_response_schema": true,
+    "supports_vision": true
+  },
+  "morph/morph-dsv41flash-abliterated": {
+    "_price_provenance": {
+      "source": "litellm",
+      "source_key": "morph/morph-dsv41flash-abliterated"
+    },
+    "_price_status": "computable",
+    "cache_read_input_token_cost": 3e-08,
+    "input_cost_per_token": 3e-07,
+    "litellm_provider": "morph",
+    "max_input_tokens": 1048576,
+    "max_output_tokens": 1048576,
+    "mode": "chat",
+    "output_cost_per_token": 1.2e-06,
+    "source": "https://www.morphllm.com/pricing",
+    "supports_function_calling": true,
+    "supports_parallel_function_calling": true,
+    "supports_prompt_caching": true,
+    "supports_reasoning": true,
+    "supports_response_schema": true,
+    "supports_vision": true
   },
   "morph/morph-dsv4flash": {
     "_price_provenance": {
-      "provider_id": "morph",
-      "source": "models.dev",
-      "source_key": "morph-dsv4flash",
-      "source_unit": "USD per million tokens"
+      "source": "litellm",
+      "source_key": "morph/morph-dsv4flash"
     },
     "_price_status": "computable",
-    "_source_cost": {
-      "cache_read": 0.0359375,
-      "input": 0.141953125,
-      "output": 0.399625
-    },
     "cache_read_input_token_cost": 3.59375e-08,
     "input_cost_per_token": 1.41953125e-07,
     "litellm_provider": "morph",
+    "max_input_tokens": 1048576,
     "max_output_tokens": 1048576,
-    "max_tokens": 1048576,
-    "output_cost_per_token": 3.99625e-07
+    "mode": "chat",
+    "output_cost_per_token": 3.99625e-07,
+    "source": "https://www.morphllm.com/pricing",
+    "supports_function_calling": true,
+    "supports_parallel_function_calling": true,
+    "supports_prompt_caching": true,
+    "supports_reasoning": true,
+    "supports_response_schema": true
   },
   "morph/morph-glm52-744b": {
     "_price_provenance": {
@@ -165750,83 +165696,86 @@
   },
   "morph/morph-glm53-744b": {
     "_price_provenance": {
-      "provider_id": "morph",
-      "source": "models.dev",
-      "source_key": "morph-glm53-744b",
-      "source_unit": "USD per million tokens"
+      "source": "litellm",
+      "source_key": "morph/morph-glm53-744b"
     },
     "_price_status": "computable",
-    "_source_cost": {
-      "cache_read": 0.1955,
-      "input": 1.19,
-      "output": 6
-    },
     "cache_read_input_token_cost": 1.955e-07,
     "input_cost_per_token": 1.19e-06,
     "litellm_provider": "morph",
+    "max_input_tokens": 1048576,
     "max_output_tokens": 1048576,
-    "max_tokens": 1048576,
-    "output_cost_per_token": 6e-06
+    "mode": "chat",
+    "output_cost_per_token": 6e-06,
+    "source": "https://www.morphllm.com/pricing",
+    "supports_function_calling": true,
+    "supports_parallel_function_calling": true,
+    "supports_prompt_caching": true,
+    "supports_reasoning": true,
+    "supports_response_schema": true
   },
   "morph/morph-glm53flash": {
     "_price_provenance": {
-      "provider_id": "morph",
-      "source": "models.dev",
-      "source_key": "morph-glm53flash",
-      "source_unit": "USD per million tokens"
+      "source": "litellm",
+      "source_key": "morph/morph-glm53flash"
     },
     "_price_status": "computable",
-    "_source_cost": {
-      "cache_read": 0.04,
-      "input": 0.2,
-      "output": 0.7
-    },
     "cache_read_input_token_cost": 4e-08,
-    "input_cost_per_token": 2.0000000000000002e-07,
+    "input_cost_per_token": 2e-07,
     "litellm_provider": "morph",
+    "max_input_tokens": 1048576,
     "max_output_tokens": 1048576,
-    "max_tokens": 1048576,
-    "output_cost_per_token": 7e-07
+    "mode": "chat",
+    "output_cost_per_token": 7e-07,
+    "source": "https://www.morphllm.com/pricing",
+    "supports_function_calling": true,
+    "supports_parallel_function_calling": true,
+    "supports_prompt_caching": true,
+    "supports_reasoning": true,
+    "supports_response_schema": true,
+    "supports_vision": true
   },
   "morph/morph-kimik3": {
     "_price_provenance": {
-      "provider_id": "morph",
-      "source": "models.dev",
-      "source_key": "morph-kimik3",
-      "source_unit": "USD per million tokens"
+      "source": "litellm",
+      "source_key": "morph/morph-kimik3"
     },
     "_price_status": "computable",
-    "_source_cost": {
-      "cache_read": 0.29,
-      "input": 2.5,
-      "output": 14
-    },
     "cache_read_input_token_cost": 2.9e-07,
     "input_cost_per_token": 2.5e-06,
     "litellm_provider": "morph",
+    "max_input_tokens": 1048576,
     "max_output_tokens": 1048576,
-    "max_tokens": 1048576,
-    "output_cost_per_token": 1.4e-05
+    "mode": "chat",
+    "output_cost_per_token": 1.4e-05,
+    "source": "https://www.morphllm.com/pricing",
+    "supports_function_calling": true,
+    "supports_parallel_function_calling": true,
+    "supports_prompt_caching": true,
+    "supports_reasoning": true,
+    "supports_response_schema": true,
+    "supports_vision": true
   },
   "morph/morph-kimik3-fast": {
     "_price_provenance": {
-      "provider_id": "morph",
-      "source": "models.dev",
-      "source_key": "morph-kimik3-fast",
-      "source_unit": "USD per million tokens"
+      "source": "litellm",
+      "source_key": "morph/morph-kimik3-fast"
     },
     "_price_status": "computable",
-    "_source_cost": {
-      "cache_read": 0.6,
-      "input": 6,
-      "output": 22.5
-    },
     "cache_read_input_token_cost": 6e-07,
     "input_cost_per_token": 6e-06,
     "litellm_provider": "morph",
+    "max_input_tokens": 1048576,
     "max_output_tokens": 1048576,
-    "max_tokens": 1048576,
-    "output_cost_per_token": 2.25e-05
+    "mode": "chat",
+    "output_cost_per_token": 2.25e-05,
+    "source": "https://www.morphllm.com/pricing",
+    "supports_function_calling": true,
+    "supports_parallel_function_calling": true,
+    "supports_prompt_caching": true,
+    "supports_reasoning": true,
+    "supports_response_schema": true,
+    "supports_vision": true
   },
   "morph/morph-v3-fast": {
     "_price_provenance": {
@@ -170293,12 +170242,12 @@
     },
     "_price_status": "computable",
     "_source_cost": {
-      "cache_read": 0.003,
-      "input": 0.048,
+      "cache_read": 0.005,
+      "input": 0.1,
       "output": 0.6
     },
-    "cache_read_input_token_cost": 3e-09,
-    "input_cost_per_token": 4.8e-08,
+    "cache_read_input_token_cost": 5e-09,
+    "input_cost_per_token": 1.0000000000000001e-07,
     "litellm_provider": "nano-gpt",
     "max_input_tokens": 1048576,
     "max_output_tokens": 393216,
@@ -170452,6 +170401,48 @@
     "max_tokens": 1000000,
     "output_cost_per_token": 2.5e-07
   },
+  "nano-gpt/deepseek/deepseek-v4.1-flash-0910-uncensored": {
+    "_price_provenance": {
+      "provider_id": "nano-gpt",
+      "source": "models.dev",
+      "source_key": "deepseek/deepseek-v4.1-flash-0910-uncensored",
+      "source_unit": "USD per million tokens"
+    },
+    "_price_status": "computable",
+    "_source_cost": {
+      "cache_read": 0.00825,
+      "input": 0.33,
+      "output": 1.32
+    },
+    "cache_read_input_token_cost": 8.250000000000001e-09,
+    "input_cost_per_token": 3.3e-07,
+    "litellm_provider": "nano-gpt",
+    "max_input_tokens": 524288,
+    "max_output_tokens": 32768,
+    "max_tokens": 524288,
+    "output_cost_per_token": 1.32e-06
+  },
+  "nano-gpt/deepseek/deepseek-v4.1-flash-0910-uncensored:thinking": {
+    "_price_provenance": {
+      "provider_id": "nano-gpt",
+      "source": "models.dev",
+      "source_key": "deepseek/deepseek-v4.1-flash-0910-uncensored:thinking",
+      "source_unit": "USD per million tokens"
+    },
+    "_price_status": "computable",
+    "_source_cost": {
+      "cache_read": 0.00825,
+      "input": 0.33,
+      "output": 1.32
+    },
+    "cache_read_input_token_cost": 8.250000000000001e-09,
+    "input_cost_per_token": 3.3e-07,
+    "litellm_provider": "nano-gpt",
+    "max_input_tokens": 524288,
+    "max_output_tokens": 32768,
+    "max_tokens": 524288,
+    "output_cost_per_token": 1.32e-06
+  },
   "nano-gpt/deepseek/deepseek-v4.1-flash-1017": {
     "_price_provenance": {
       "provider_id": "nano-gpt",
@@ -170461,17 +170452,59 @@
     },
     "_price_status": "computable",
     "_source_cost": {
-      "cache_read": 0.003,
-      "input": 0.048,
+      "cache_read": 0.005,
+      "input": 0.1,
       "output": 0.6
     },
-    "cache_read_input_token_cost": 3e-09,
-    "input_cost_per_token": 4.8e-08,
+    "cache_read_input_token_cost": 5e-09,
+    "input_cost_per_token": 1.0000000000000001e-07,
     "litellm_provider": "nano-gpt",
     "max_input_tokens": 1048576,
     "max_output_tokens": 393216,
     "max_tokens": 1048576,
     "output_cost_per_token": 6e-07
+  },
+  "nano-gpt/deepseek/deepseek-v4.1-flash-1017-uncensored": {
+    "_price_provenance": {
+      "provider_id": "nano-gpt",
+      "source": "models.dev",
+      "source_key": "deepseek/deepseek-v4.1-flash-1017-uncensored",
+      "source_unit": "USD per million tokens"
+    },
+    "_price_status": "computable",
+    "_source_cost": {
+      "cache_read": 0.00825,
+      "input": 0.33,
+      "output": 1.32
+    },
+    "cache_read_input_token_cost": 8.250000000000001e-09,
+    "input_cost_per_token": 3.3e-07,
+    "litellm_provider": "nano-gpt",
+    "max_input_tokens": 1048576,
+    "max_output_tokens": 393216,
+    "max_tokens": 1048576,
+    "output_cost_per_token": 1.32e-06
+  },
+  "nano-gpt/deepseek/deepseek-v4.1-flash-1017-uncensored:thinking": {
+    "_price_provenance": {
+      "provider_id": "nano-gpt",
+      "source": "models.dev",
+      "source_key": "deepseek/deepseek-v4.1-flash-1017-uncensored:thinking",
+      "source_unit": "USD per million tokens"
+    },
+    "_price_status": "computable",
+    "_source_cost": {
+      "cache_read": 0.00825,
+      "input": 0.33,
+      "output": 1.32
+    },
+    "cache_read_input_token_cost": 8.250000000000001e-09,
+    "input_cost_per_token": 3.3e-07,
+    "litellm_provider": "nano-gpt",
+    "max_input_tokens": 1048576,
+    "max_output_tokens": 393216,
+    "max_tokens": 1048576,
+    "output_cost_per_token": 1.32e-06
   },
   "nano-gpt/deepseek/deepseek-v4.1-flash-1017:thinking": {
     "_price_provenance": {
@@ -170482,12 +170515,12 @@
     },
     "_price_status": "computable",
     "_source_cost": {
-      "cache_read": 0.003,
-      "input": 0.048,
+      "cache_read": 0.005,
+      "input": 0.1,
       "output": 0.6
     },
-    "cache_read_input_token_cost": 3e-09,
-    "input_cost_per_token": 4.8e-08,
+    "cache_read_input_token_cost": 5e-09,
+    "input_cost_per_token": 1.0000000000000001e-07,
     "litellm_provider": "nano-gpt",
     "max_input_tokens": 1048576,
     "max_output_tokens": 393216,
@@ -172276,17 +172309,17 @@
     },
     "_price_status": "computable",
     "_source_cost": {
-      "cache_read": 0.05,
-      "input": 0.09,
-      "output": 0.3
+      "cache_read": 0.046,
+      "input": 0.07,
+      "output": 0.24
     },
-    "cache_read_input_token_cost": 5.0000000000000004e-08,
-    "input_cost_per_token": 9e-08,
+    "cache_read_input_token_cost": 4.6e-08,
+    "input_cost_per_token": 7e-08,
     "litellm_provider": "nano-gpt",
     "max_input_tokens": 262144,
     "max_output_tokens": 131072,
     "max_tokens": 262144,
-    "output_cost_per_token": 3e-07
+    "output_cost_per_token": 2.4e-07
   },
   "nano-gpt/google/gemma-4-26b-a4b-it-cybersecurity": {
     "_price_provenance": {
@@ -172318,17 +172351,17 @@
     },
     "_price_status": "computable",
     "_source_cost": {
-      "cache_read": 0.05,
-      "input": 0.09,
-      "output": 0.3
+      "cache_read": 0.046,
+      "input": 0.07,
+      "output": 0.24
     },
-    "cache_read_input_token_cost": 5.0000000000000004e-08,
-    "input_cost_per_token": 9e-08,
+    "cache_read_input_token_cost": 4.6e-08,
+    "input_cost_per_token": 7e-08,
     "litellm_provider": "nano-gpt",
     "max_input_tokens": 262144,
     "max_output_tokens": 131072,
     "max_tokens": 262144,
-    "output_cost_per_token": 3e-07
+    "output_cost_per_token": 2.4e-07
   },
   "nano-gpt/google/gemma-4-31b-it": {
     "_price_provenance": {
@@ -175771,13 +175804,13 @@
     },
     "_price_status": "computable",
     "_source_cost": {
-      "cache_read": 0.2,
+      "cache_read": 0.1,
       "cache_write": 2.5,
       "input": 2,
       "output": 10
     },
     "cache_creation_input_token_cost": 2.5e-06,
-    "cache_read_input_token_cost": 2.0000000000000002e-07,
+    "cache_read_input_token_cost": 1.0000000000000001e-07,
     "input_cost_per_token": 2e-06,
     "litellm_provider": "nano-gpt",
     "max_input_tokens": 1050000,
@@ -179707,17 +179740,17 @@
     },
     "_price_status": "computable",
     "_source_cost": {
-      "cache_read": 0.078,
-      "input": 0.42,
-      "output": 1.32
+      "cache_read": 0.069,
+      "input": 0.203,
+      "output": 2.208
     },
-    "cache_read_input_token_cost": 7.8e-08,
-    "input_cost_per_token": 4.2e-07,
+    "cache_read_input_token_cost": 6.900000000000001e-08,
+    "input_cost_per_token": 2.03e-07,
     "litellm_provider": "nano-gpt",
     "max_input_tokens": 1048576,
     "max_output_tokens": 131072,
     "max_tokens": 1048576,
-    "output_cost_per_token": 1.32e-06
+    "output_cost_per_token": 2.2080000000000003e-06
   },
   "nano-gpt/z-ai/glm-5.2:thinking": {
     "_price_provenance": {
@@ -179728,17 +179761,17 @@
     },
     "_price_status": "computable",
     "_source_cost": {
-      "cache_read": 0.078,
-      "input": 0.42,
-      "output": 1.32
+      "cache_read": 0.069,
+      "input": 0.203,
+      "output": 2.208
     },
-    "cache_read_input_token_cost": 7.8e-08,
-    "input_cost_per_token": 4.2e-07,
+    "cache_read_input_token_cost": 6.900000000000001e-08,
+    "input_cost_per_token": 2.03e-07,
     "litellm_provider": "nano-gpt",
     "max_input_tokens": 1048576,
     "max_output_tokens": 131072,
     "max_tokens": 1048576,
-    "output_cost_per_token": 1.32e-06
+    "output_cost_per_token": 2.2080000000000003e-06
   },
   "nano-gpt/z-ai/glm-5.3": {
     "_price_provenance": {
@@ -184754,7 +184787,7 @@
     "input_cost_per_token": 3e-07,
     "litellm_provider": "novita-ai",
     "max_output_tokens": 262144,
-    "max_tokens": 262144,
+    "max_tokens": 1000000,
     "output_cost_per_token": 9.000000000000001e-07
   },
   "novita-ai/meta-llama/llama-3.1-8b-instruct": {
@@ -185167,9 +185200,11 @@
     "_price_status": "computable",
     "_source_cost": {
       "cache_read": 0.3,
+      "cache_write": 3,
       "input": 3,
       "output": 15
     },
+    "cache_creation_input_token_cost": 3e-06,
     "cache_read_input_token_cost": 3e-07,
     "input_cost_per_token": 3e-06,
     "litellm_provider": "novita-ai",
@@ -192254,16 +192289,16 @@
     },
     "_price_status": "computable",
     "_source_cost": {
-      "cache_read": 0.15,
-      "input": 1.32,
-      "output": 3.96
+      "cache_read": 0.145,
+      "input": 1.74,
+      "output": 3.48
     },
-    "cache_read_input_token_cost": 1.5e-07,
-    "input_cost_per_token": 1.32e-06,
+    "cache_read_input_token_cost": 1.45e-07,
+    "input_cost_per_token": 1.74e-06,
     "litellm_provider": "ofox",
     "max_output_tokens": 384000,
     "max_tokens": 1000000,
-    "output_cost_per_token": 3.96e-06
+    "output_cost_per_token": 3.48e-06
   },
   "ofox/deepseek/deepseek-v4-pro-0813": {
     "_price_provenance": {
@@ -195507,7 +195542,7 @@
     "input_cost_per_token": 1e-07,
     "input_cost_per_token_above_272k_tokens": 2e-07,
     "litellm_provider": "bedrock_converse",
-    "max_input_tokens": 1050000,
+    "max_input_tokens": 922000,
     "max_output_tokens": 128000,
     "mode": "chat",
     "output_cost_per_token": 5e-07,
@@ -195545,7 +195580,7 @@
     "input_cost_per_token": 2e-06,
     "input_cost_per_token_above_272k_tokens": 4e-06,
     "litellm_provider": "bedrock_converse",
-    "max_input_tokens": 1050000,
+    "max_input_tokens": 922000,
     "max_output_tokens": 128000,
     "mode": "chat",
     "output_cost_per_token": 1e-05,
@@ -202815,16 +202850,16 @@
     },
     "_price_status": "computable",
     "_source_cost": {
-      "cache_read": 0.05,
-      "input": 0.05,
-      "output": 0.45
+      "cache_read": 0.028,
+      "input": 0.14,
+      "output": 0.28
     },
-    "cache_read_input_token_cost": 5.0000000000000004e-08,
-    "input_cost_per_token": 5.0000000000000004e-08,
+    "cache_read_input_token_cost": 2.8e-08,
+    "input_cost_per_token": 1.4e-07,
     "litellm_provider": "openrouter",
-    "max_output_tokens": 943718,
+    "max_output_tokens": 131072,
     "max_tokens": 1048576,
-    "output_cost_per_token": 4.5000000000000003e-07
+    "output_cost_per_token": 2.8e-07
   },
   "openrouter/deepseek/deepseek-v4-flash-0731": {
     "_price_provenance": {
@@ -203944,8 +203979,8 @@
     "cache_read_input_token_cost": 1.5e-08,
     "input_cost_per_token": 7.5e-08,
     "litellm_provider": "openrouter",
-    "max_output_tokens": 235929,
-    "max_tokens": 262144,
+    "max_output_tokens": 262144,
+    "max_tokens": 1000000,
     "output_cost_per_token": 2.2500000000000002e-07
   },
   "openrouter/inference-net/schematron-v2-small": {
@@ -204111,16 +204146,14 @@
     },
     "_price_status": "computable",
     "_source_cost": {
-      "cache_read": 0.025,
-      "input": 0.05,
-      "output": 0.08
+      "input": 0.02,
+      "output": 0.04
     },
-    "cache_read_input_token_cost": 2.5000000000000002e-08,
-    "input_cost_per_token": 5.0000000000000004e-08,
+    "input_cost_per_token": 2e-08,
     "litellm_provider": "openrouter",
-    "max_output_tokens": 117964,
+    "max_output_tokens": 16384,
     "max_tokens": 131072,
-    "output_cost_per_token": 8e-08
+    "output_cost_per_token": 4e-08
   },
   "openrouter/meta-llama/llama-3.2-1b-instruct": {
     "_price_provenance": {
@@ -205135,12 +205168,12 @@
     },
     "_price_status": "computable",
     "_source_cost": {
-      "cache_read": 0.179,
-      "input": 0.189,
+      "cache_read": 0.169,
+      "input": 0.179,
       "output": 20
     },
-    "cache_read_input_token_cost": 1.79e-07,
-    "input_cost_per_token": 1.89e-07,
+    "cache_read_input_token_cost": 1.6900000000000002e-07,
+    "input_cost_per_token": 1.79e-07,
     "litellm_provider": "openrouter",
     "max_output_tokens": 943718,
     "max_tokens": 1048576,
@@ -205287,9 +205320,11 @@
     },
     "_price_status": "computable",
     "_source_cost": {
+      "cache_read": 0.2,
       "input": 1,
       "output": 3
     },
+    "cache_read_input_token_cost": 2.0000000000000002e-07,
     "input_cost_per_token": 1e-06,
     "litellm_provider": "openrouter",
     "max_output_tokens": 117964,
@@ -205305,9 +205340,11 @@
     },
     "_price_status": "computable",
     "_source_cost": {
+      "cache_read": 0.012,
       "input": 0.06,
       "output": 0.24
     },
+    "cache_read_input_token_cost": 1.2e-08,
     "input_cost_per_token": 6e-08,
     "litellm_provider": "openrouter",
     "max_output_tokens": 235929,
@@ -205351,24 +205388,6 @@
     "max_output_tokens": 235929,
     "max_tokens": 262144,
     "output_cost_per_token": 2.4e-06
-  },
-  "openrouter/nvidia/nemotron-3-super-120b-a12b:free": {
-    "_price_provenance": {
-      "provider_id": "openrouter",
-      "source": "models.dev",
-      "source_key": "nvidia/nemotron-3-super-120b-a12b:free",
-      "source_unit": "USD per million tokens"
-    },
-    "_price_status": "computable",
-    "_source_cost": {
-      "input": 0,
-      "output": 0
-    },
-    "input_cost_per_token": 0.0,
-    "litellm_provider": "openrouter",
-    "max_output_tokens": 235929,
-    "max_tokens": 262144,
-    "output_cost_per_token": 0.0
   },
   "openrouter/nvidia/nemotron-3-ultra-550b-a55b": {
     "_price_provenance": {
@@ -207506,6 +207525,26 @@
     "max_tokens": 262144,
     "output_cost_per_token": 5e-07
   },
+  "openrouter/prism-ml/ternary-bonsai-2-9b": {
+    "_price_provenance": {
+      "provider_id": "openrouter",
+      "source": "models.dev",
+      "source_key": "prism-ml/ternary-bonsai-2-9b",
+      "source_unit": "USD per million tokens"
+    },
+    "_price_status": "computable",
+    "_source_cost": {
+      "cache_read": 0.04,
+      "input": 0.08,
+      "output": 0.13
+    },
+    "cache_read_input_token_cost": 4e-08,
+    "input_cost_per_token": 8e-08,
+    "litellm_provider": "openrouter",
+    "max_output_tokens": 65536,
+    "max_tokens": 262144,
+    "output_cost_per_token": 1.3e-07
+  },
   "openrouter/qwen/qwen-2.5-72b-instruct": {
     "_price_provenance": {
       "provider_id": "openrouter",
@@ -207701,9 +207740,11 @@
     },
     "_price_status": "computable",
     "_source_cost": {
+      "cache_read": 0.1,
       "input": 0.1,
       "output": 0.3
     },
+    "cache_read_input_token_cost": 1.0000000000000001e-07,
     "input_cost_per_token": 1.0000000000000001e-07,
     "litellm_provider": "openrouter",
     "max_output_tokens": 235929,
@@ -208131,14 +208172,14 @@
     },
     "_price_status": "computable",
     "_source_cost": {
-      "input": 0.32,
-      "output": 3.2
+      "input": 0.45,
+      "output": 2.7
     },
-    "input_cost_per_token": 3.2e-07,
+    "input_cost_per_token": 4.5000000000000003e-07,
     "litellm_provider": "openrouter",
-    "max_output_tokens": 81920,
+    "max_output_tokens": 65536,
     "max_tokens": 262144,
-    "output_cost_per_token": 3.2000000000000003e-06
+    "output_cost_per_token": 2.7e-06
   },
   "openrouter/qwen/qwen3.6-35b-a3b": {
     "_price_provenance": {
@@ -208149,16 +208190,16 @@
     },
     "_price_status": "computable",
     "_source_cost": {
-      "cache_read": 0.05,
+      "cache_read": 0.025,
       "input": 0.1,
-      "output": 0.95
+      "output": 0.9
     },
-    "cache_read_input_token_cost": 5.0000000000000004e-08,
+    "cache_read_input_token_cost": 2.5000000000000002e-08,
     "input_cost_per_token": 1.0000000000000001e-07,
     "litellm_provider": "openrouter",
     "max_output_tokens": 235929,
     "max_tokens": 262144,
-    "output_cost_per_token": 9.499999999999999e-07
+    "output_cost_per_token": 9.000000000000001e-07
   },
   "openrouter/qwen/qwen3.6-flash": {
     "_price_provenance": {
@@ -208368,16 +208409,16 @@
     },
     "_price_status": "computable",
     "_source_cost": {
-      "cache_read": 0.09,
-      "input": 0.2,
-      "output": 2.5
+      "cache_read": 0.0039,
+      "input": 0.039,
+      "output": 1.25
     },
-    "cache_read_input_token_cost": 9e-08,
-    "input_cost_per_token": 2.0000000000000002e-07,
+    "cache_read_input_token_cost": 3.9e-09,
+    "input_cost_per_token": 3.9e-08,
     "litellm_provider": "openrouter",
-    "max_output_tokens": 235929,
+    "max_output_tokens": 65536,
     "max_tokens": 1000000,
-    "output_cost_per_token": 2.5e-06
+    "output_cost_per_token": 1.25e-06
   },
   "openrouter/qwen/qwen3.8-flash": {
     "_price_provenance": {
@@ -209773,16 +209814,16 @@
     },
     "_price_status": "computable",
     "_source_cost": {
-      "cache_read": 0.1794,
-      "input": 0.966,
-      "output": 3.036
+      "cache_read": 0.26,
+      "input": 1.4,
+      "output": 4.4
     },
-    "cache_read_input_token_cost": 1.794e-07,
-    "input_cost_per_token": 9.66e-07,
+    "cache_read_input_token_cost": 2.6e-07,
+    "input_cost_per_token": 1.4e-06,
     "litellm_provider": "openrouter",
-    "max_output_tokens": 128000,
+    "max_output_tokens": 131072,
     "max_tokens": 204800,
-    "output_cost_per_token": 3.0360000000000002e-06
+    "output_cost_per_token": 4.4e-06
   },
   "openrouter/z-ai/glm-5.2": {
     "_price_provenance": {
@@ -209793,12 +209834,12 @@
     },
     "_price_status": "computable",
     "_source_cost": {
-      "cache_read": 0.033,
-      "input": 0.0341,
+      "cache_read": 0.013,
+      "input": 0.014,
       "output": 7
     },
-    "cache_read_input_token_cost": 3.3000000000000004e-08,
-    "input_cost_per_token": 3.41e-08,
+    "cache_read_input_token_cost": 1.2999999999999999e-08,
+    "input_cost_per_token": 1.4e-08,
     "litellm_provider": "openrouter",
     "max_output_tokens": 943718,
     "max_tokens": 1048576,
@@ -210013,16 +210054,16 @@
     },
     "_price_status": "computable",
     "_source_cost": {
-      "cache_read": 0.015,
-      "input": 0.02,
-      "output": 1
+      "cache_read": 0.0114,
+      "input": 0.0115,
+      "output": 1.64
     },
-    "cache_read_input_token_cost": 1.5e-08,
-    "input_cost_per_token": 2e-08,
+    "cache_read_input_token_cost": 1.1400000000000001e-08,
+    "input_cost_per_token": 1.15e-08,
     "litellm_provider": "openrouter",
     "max_output_tokens": 943718,
     "max_tokens": 1048576,
-    "output_cost_per_token": 1e-06
+    "output_cost_per_token": 1.64e-06
   },
   "openrouter/~deepseek/deepseek-pro-latest": {
     "_price_provenance": {
@@ -210034,11 +210075,11 @@
     "_price_status": "computable",
     "_source_cost": {
       "cache_read": 0.25,
-      "input": 0.2484,
+      "input": 0.2542,
       "output": 8
     },
     "cache_read_input_token_cost": 2.5e-07,
-    "input_cost_per_token": 2.4840000000000003e-07,
+    "input_cost_per_token": 2.542e-07,
     "litellm_provider": "openrouter",
     "max_output_tokens": 393216,
     "max_tokens": 1048576,
@@ -210141,12 +210182,12 @@
     },
     "_price_status": "computable",
     "_source_cost": {
-      "cache_read": 0.179,
-      "input": 0.189,
+      "cache_read": 0.169,
+      "input": 0.179,
       "output": 20
     },
-    "cache_read_input_token_cost": 1.79e-07,
-    "input_cost_per_token": 1.89e-07,
+    "cache_read_input_token_cost": 1.6900000000000002e-07,
+    "input_cost_per_token": 1.79e-07,
     "litellm_provider": "openrouter",
     "max_output_tokens": 943718,
     "max_tokens": 1048576,
@@ -210397,16 +210438,16 @@
     },
     "_price_status": "computable",
     "_source_cost": {
-      "cache_read": 0.03,
-      "input": 0.0513,
-      "output": 0.0701
+      "cache_read": 0.0285,
+      "input": 0.0285,
+      "output": 0.0923
     },
-    "cache_read_input_token_cost": 3e-08,
-    "input_cost_per_token": 5.1299999999999996e-08,
+    "cache_read_input_token_cost": 2.85e-08,
+    "input_cost_per_token": 2.85e-08,
     "litellm_provider": "openrouter",
     "max_output_tokens": 131072,
     "max_tokens": 1048576,
-    "output_cost_per_token": 7.01e-08
+    "output_cost_per_token": 9.23e-08
   },
   "openrouter/~z-ai/glm-latest": {
     "_price_provenance": {
@@ -221000,7 +221041,7 @@
     },
     "input_cost_per_token": 4.4e-07,
     "litellm_provider": "prime",
-    "max_output_tokens": 943718,
+    "max_output_tokens": 131072,
     "max_tokens": 1048576,
     "output_cost_per_token": 1.32e-06
   },
@@ -247376,6 +247417,7 @@
     },
     "_price_status": "computable",
     "cache_read_input_token_cost": 6e-08,
+    "deprecation_date": "2026-11-06",
     "input_cost_per_token": 3e-07,
     "litellm_provider": "together_ai",
     "max_input_tokens": 524288,
@@ -248534,6 +248576,7 @@
     },
     "_price_status": "computable",
     "cache_read_input_token_cost": 1.7e-07,
+    "deprecation_date": "2026-11-06",
     "input_cost_per_token": 1e-06,
     "litellm_provider": "together_ai",
     "max_input_tokens": 524288,
@@ -252702,7 +252745,7 @@
     "input_cost_per_token": 2.75e-06,
     "input_cost_per_token_above_272k_tokens": 5.5e-06,
     "litellm_provider": "bedrock_converse",
-    "max_input_tokens": 1050000,
+    "max_input_tokens": 922000,
     "max_output_tokens": 128000,
     "mode": "chat",
     "output_cost_per_token": 1.65e-05,
@@ -252738,7 +252781,7 @@
     "input_cost_per_token": 5.5e-06,
     "input_cost_per_token_above_272k_tokens": 1.1e-05,
     "litellm_provider": "bedrock_converse",
-    "max_input_tokens": 1050000,
+    "max_input_tokens": 922000,
     "max_output_tokens": 128000,
     "mode": "chat",
     "output_cost_per_token": 3.3e-05,
@@ -252776,7 +252819,7 @@
     "input_cost_per_token": 2.2e-07,
     "input_cost_per_token_above_272k_tokens": 4.4e-07,
     "litellm_provider": "bedrock_converse",
-    "max_input_tokens": 1050000,
+    "max_input_tokens": 922000,
     "max_output_tokens": 128000,
     "mode": "chat",
     "output_cost_per_token": 1.32e-06,
@@ -252817,7 +252860,7 @@
     "input_cost_per_token": 4.4e-06,
     "input_cost_per_token_above_272k_tokens": 8.8e-06,
     "litellm_provider": "bedrock_converse",
-    "max_input_tokens": 1050000,
+    "max_input_tokens": 922000,
     "max_output_tokens": 128000,
     "mode": "chat",
     "output_cost_per_token": 2.2e-05,
@@ -252858,7 +252901,7 @@
     "input_cost_per_token": 2.2e-06,
     "input_cost_per_token_above_272k_tokens": 4.4e-06,
     "litellm_provider": "bedrock_converse",
-    "max_input_tokens": 1050000,
+    "max_input_tokens": 922000,
     "max_output_tokens": 128000,
     "mode": "chat",
     "output_cost_per_token": 1.32e-05,
@@ -252905,7 +252948,7 @@
     "input_cost_per_token_above_272k_tokens_ultrafast": 0.000132,
     "input_cost_per_token_ultrafast": 6.6e-05,
     "litellm_provider": "bedrock_converse",
-    "max_input_tokens": 1050000,
+    "max_input_tokens": 922000,
     "max_output_tokens": 128000,
     "mode": "chat",
     "output_cost_per_token": 5.5e-05,
@@ -252950,7 +252993,7 @@
     "input_cost_per_token": 1.1e-07,
     "input_cost_per_token_above_272k_tokens": 2.2e-07,
     "litellm_provider": "bedrock_converse",
-    "max_input_tokens": 1050000,
+    "max_input_tokens": 922000,
     "max_output_tokens": 128000,
     "mode": "chat",
     "output_cost_per_token": 5.5e-07,
@@ -252993,7 +253036,7 @@
     "input_cost_per_token": 2.2e-06,
     "input_cost_per_token_above_272k_tokens": 4.4e-06,
     "litellm_provider": "bedrock_converse",
-    "max_input_tokens": 1050000,
+    "max_input_tokens": 922000,
     "max_output_tokens": 128000,
     "mode": "chat",
     "output_cost_per_token": 1.1e-05,
@@ -254232,6 +254275,26 @@
     "max_tokens": 1000000,
     "output_cost_per_token": 1.2e-06
   },
+  "venice/deepseek-v4-1-flash-1017-uncensored": {
+    "_price_provenance": {
+      "provider_id": "venice",
+      "source": "models.dev",
+      "source_key": "deepseek-v4-1-flash-1017-uncensored",
+      "source_unit": "USD per million tokens"
+    },
+    "_price_status": "computable",
+    "_source_cost": {
+      "cache_read": 0.00825,
+      "input": 0.33,
+      "output": 1.32
+    },
+    "cache_read_input_token_cost": 8.250000000000001e-09,
+    "input_cost_per_token": 3.3e-07,
+    "litellm_provider": "venice",
+    "max_output_tokens": 131072,
+    "max_tokens": 1000000,
+    "output_cost_per_token": 1.32e-06
+  },
   "venice/deepseek-v4-1-flash-uncensored": {
     "_price_provenance": {
       "provider_id": "venice",
@@ -255303,16 +255366,16 @@
     },
     "_price_status": "computable",
     "_source_cost": {
-      "cache_read": 0.125,
-      "input": 0.25,
-      "output": 1.25
+      "cache_read": 0.04,
+      "input": 0.2,
+      "output": 0.5
     },
-    "cache_read_input_token_cost": 1.25e-07,
-    "input_cost_per_token": 2.5e-07,
+    "cache_read_input_token_cost": 4e-08,
+    "input_cost_per_token": 2.0000000000000002e-07,
     "litellm_provider": "venice",
     "max_output_tokens": 32768,
     "max_tokens": 262144,
-    "output_cost_per_token": 1.25e-06
+    "output_cost_per_token": 5e-07
   },
   "venice/nvidia-nemotron-3-nano-30b-a3b": {
     "_price_provenance": {
@@ -268861,7 +268924,6 @@
     "cache_read_input_token_cost_batches": 1.25e-08,
     "cache_read_input_token_cost_flex": 1.25e-08,
     "cache_read_input_token_cost_priority": 4.5e-08,
-    "deprecation_date": "2027-06-28",
     "input_cost_per_image": 0.00028,
     "input_cost_per_token": 2.5e-07,
     "input_cost_per_token_batches": 1.25e-07,
@@ -272320,6 +272382,47 @@
     "max_output_tokens": 128000,
     "max_tokens": 1050000,
     "output_cost_per_token": 1e-05
+  },
+  "vivgrid/gpt-6.1-terra": {
+    "_price_provenance": {
+      "provider_id": "vivgrid",
+      "source": "models.dev",
+      "source_key": "gpt-6.1-terra",
+      "source_unit": "USD per million tokens"
+    },
+    "_price_status": "computable",
+    "_source_cost": {
+      "cache_read": 0.055,
+      "cache_write": 1.375,
+      "context_over_200k": {
+        "cache_read": 0.11,
+        "cache_write": 2.75,
+        "input": 2.2,
+        "output": 8.25
+      },
+      "input": 1.1,
+      "output": 5.5,
+      "tiers": [
+        {
+          "cache_read": 0.11,
+          "cache_write": 2.75,
+          "input": 2.2,
+          "output": 8.25,
+          "tier": {
+            "size": 272000,
+            "type": "context"
+          }
+        }
+      ]
+    },
+    "cache_creation_input_token_cost": 1.375e-06,
+    "cache_read_input_token_cost": 5.5e-08,
+    "input_cost_per_token": 1.1e-06,
+    "litellm_provider": "vivgrid",
+    "max_input_tokens": 922000,
+    "max_output_tokens": 128000,
+    "max_tokens": 1050000,
+    "output_cost_per_token": 5.5e-06
   },
   "vivgrid/kimi-k3": {
     "_price_provenance": {
