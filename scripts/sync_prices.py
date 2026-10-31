@@ -177,10 +177,14 @@ DEVIN_MODELS = {"swe-2-medium": "Medium", "swe-2-high": "High", "swe-2-max": "Ma
 
 
 def parse_devin(raw):
-    text = raw.decode("utf-8").replace("\\$", "$")
+    # Mintlify can escape tab labels and dollar signs more than once.
+    text = re.sub(r"\\+([\[\]$])", r"\1", raw.decode("utf-8"))
     # Only the explicit self-serve SWE-2 list-price sentence is authoritative
     # here. Never read account tables, promotion prices or enterprise discounts.
-    section = re.search(r"\*\*Self-serve\*\*(.*?)\*\*Enterprise \(ACUs\)\*\*", text, re.S)
+    section = re.search(
+        r"(?:\*\*Self-serve\*\*|\[tab\][ \t]+Self-serve)(.*?)"
+        r"(?:\*\*Enterprise \(ACUs\)\*\*|\[tab\][ \t]+Enterprise \(ACUs\))",
+        text, re.S)
     if section is None:
         raise ValueError("devin: public self-serve section not found")
     amount = r"\$([0-9]+(?:\.[0-9]+)?)/1M"
