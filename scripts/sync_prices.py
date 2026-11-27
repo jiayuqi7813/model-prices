@@ -188,8 +188,11 @@ def parse_devin(raw):
     if section is None:
         raise ValueError("devin: public self-serve section not found")
     amount = r"\$([0-9]+(?:\.[0-9]+)?)/1M"
-    pattern = (r"SWE-2[^\n]*?List pricing \(" + amount + r" input, " + amount
-               + r" output, " + amount + r" cache input\) applies afterward\.")
+    pattern = (
+        r"\bSWE-2(?![\w.-]|[ \t]+Flash\b)[^\n]*?List pricing \("
+        + amount + r" input, " + amount + r" output, (?:and )?" + amount
+        + r" cache (?:input|reads)\) applies afterward\."
+    )
     matches = re.findall(pattern, section.group(1))
     if len(matches) != 1:
         raise ValueError("devin: unique SWE-2 public list-price statement not found")
@@ -234,25 +237,32 @@ def parse_grok(raw):
     if len(sections) != 1:
         raise ValueError("grok: unique official Fast pricing section not found")
     section = sections[0]
-    if ("not available on the public xAI API" not in section
-            or "prompt exceeds 200k tokens" not in section):
-        raise ValueError("grok: Fast product availability or context boundary changed")
+    if "not available on the public xAI API" not in section:
+        raise ValueError("grok: Fast product availability changed")
     rows = [[cell.strip() for cell in line.strip().strip("|").split("|")]
             for line in section.splitlines() if line.strip().startswith("|")]
-    if (len(rows) != 4 or rows[0] != ["Prompt tokens", "Input", "Cached input", "Output"]
-            or len(rows[1]) != 4 or not all(re.fullmatch(r":?-{3,}:?", c) for c in rows[1])):
+    if (len(rows) != 4 or any(len(row) != 4 for row in rows)
+            or rows[0] != ["Prompt tokens", "Input", "Cached input", "Output"]
+            or not all(re.fullmatch(r":?-{3,}:?", c) for c in rows[1])):
         raise ValueError("grok: unrecognized Fast pricing table")
+    labels = tuple(row[0].removeprefix("\\") for row in rows[2:])
+    boundaries = {
+        ("Below 200k", "Above 200k"): ("greater_than", "prompt exceeds 200k tokens"),
+        ("< 200k", "≥ 200k"): ("greater_than_or_equal", "prompt reaches 200k tokens"),
+    }
+    boundary = boundaries.get(labels)
+    if boundary is None or boundary[1] not in section:
+        raise ValueError("grok: missing or ambiguous context pricing boundary")
+    comparison, _ = boundary
     costs = {}
-    for row, label, suffix in ((rows[2], "Below 200k", ""),
-                               (rows[3], "Above 200k", "_above_200k_tokens")):
-        if len(row) != 4 or row[0] != label:
-            raise ValueError("grok: missing or ambiguous context pricing row")
+    for row, suffix in zip(rows[2:], ("", "_above_200k_tokens")):
         for field, cell in zip(("input", "cache_read", "output"), row[1:]):
             match = re.fullmatch(r"\$([0-9]+(?:\.[0-9]+)?) / 1M", cell)
             if match is None or not valid_rate(float(match.group(1))):
                 raise ValueError(f"grok: invalid USD/million price {cell!r}")
             costs[field + suffix] = float(match.group(1))
-    return {"models": {"grok-4.7-build-fast": {"name": "Grok 4.7 Build Fast", "cost": costs}}}
+    return {"models": {"grok-4.7-build-fast": {"name": "Grok 4.7 Build Fast", "cost": costs,
+                                             "long_context_comparison": comparison}}}
 
 
 def add_grok_records(result, grok):
@@ -271,7 +281,7 @@ def add_grok_records(result, grok):
                                     "public_xai_api_available": False,
                                     "variant": "fast",
                                     "long_context_threshold_input_tokens": 200000,
-                                    "long_context_comparison": "greater_than",
+                                    "long_context_comparison": model["long_context_comparison"],
                                     "long_context_applies_to": "all request tokens",
                                     "excludes": ["subscription allowance", "free tier",
                                                  "account-specific billing"]},
